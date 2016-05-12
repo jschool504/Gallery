@@ -32,6 +32,13 @@ app.get("/works", function(request, response) {
 	});
 });
 
+app.get("/works/:title", function(request, response) {
+	console.log(request.params.title);
+	connection.query("SELECT * FROM Works WHERE title = '" + request.params.title + "'", function(error, rows, fields) {
+		response.render("work/show", {work:rows[0]});
+	});
+});
+
 app.get("/about", function(request, response) {
 	response.render("about");
 });

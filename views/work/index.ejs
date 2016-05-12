@@ -5,7 +5,7 @@
 		<% works.forEach(function(work) { %>
 			<div class="col-sm-4">
 				<div id="#preview-image" class="thumbnail darken-img">
-					<a class="darken" href="<%= work.image %>"><img height src="<%= work.image %>"/></a>
+					<a class="darken" href="works/<%= work.title %>"><img height src="<%= work.image %>"/></a>
 					<div class="caption post-content">
 						<span id="preview-title"><%= work.title %></span>
 					</div>

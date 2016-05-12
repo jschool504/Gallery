@@ -1,3 +1,7 @@
+* {
+	border-radius: 0 !important;
+}
+
 .thumbnail img {
     width: 100%;
 }
@@ -13,6 +17,22 @@
 
 .navbar-form {
 	border: none;
+}
+
+.infobar {
+	background-color: #181818;
+	color: lightgray;
+}
+
+.infobar-title {
+	margin-top: 10px;
+	font-size: 15pt;
+	font-weight: bold;
+	color: lightgray;
+}
+
+.infobar-info {
+	color: lightgray;
 }
 
 html, body {
@@ -34,7 +54,7 @@ a.darken:hover img {
 }
 
 .post-content {
-	background: none #FFFFFF;
+	background: black;
 	opacity: 0.75;
 	width: 100%;
 	top: 0;
@@ -43,7 +63,7 @@ a.darken:hover img {
 }
 
 #navbar-link {
-	color: lightgray;
+	color: white;
 }
 
 #preview-image {
@@ -51,6 +71,7 @@ a.darken:hover img {
 }
 
 #preview-title {
+	color: white;
 	font-weight: bold;
 	font-size: 12pt;
 }
