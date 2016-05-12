@@ -1,0 +1,52 @@
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+	position: relative;
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+.navbar-form {
+	border: none;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+em {
+    color: gray;
+}
+
+.post-content {
+	background: none #FFFFFF;
+	opacity: 0.75;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+}
+
+#navbar-link {
+	color: lightgray;
+}
+
+#preview-image {
+	position: relative;
+}
+
+#preview-title {
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+#delete-form {
+    display: inline;
+}
