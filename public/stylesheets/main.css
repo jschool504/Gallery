@@ -25,6 +25,14 @@ em {
     color: gray;
 }
 
+.darken-img {
+	background-color: black;
+}
+
+a.darken:hover img {
+	opacity: 0.75;
+}
+
 .post-content {
 	background: none #FFFFFF;
 	opacity: 0.75;
