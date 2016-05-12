@@ -38,6 +38,6 @@ app.get("/about", function(request, response) {
 
 // LISTENING
 
-app.listen(80, function() {
+app.listen(process.env.PORT || 80, function() {
 	console.log("Gallery is running...");
 });
