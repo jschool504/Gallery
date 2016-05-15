@@ -1,11 +1,11 @@
 <% include ../partials/header %>
 
-<div width="<%= work.width * 100 %>px" class="work-container">
-	<img height="<%= work.height * 100 %>px" class="work-img" src="<%= work.image %>">
-	<div class="infobar">
-		<p class="infobar-title"><%= work.title %></p>
-		<p class="infobar-info"><%= work.info %></p>
-	</div>
+<div class="work-container">
+	<img max-width="<%= (work.width * 100) %>px !important" max-height="<%= (work.height * 100) %>px !important" class="work-img" src="<%= work.image %>">
+</div>
+<div class="infobar">
+	<p class="infobar-title"><%= work.title %></p>
+	<p class="infobar-info"><%= work.info %></p>
 </div>
 
 <% include ../partials/footer %>
