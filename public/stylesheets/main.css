@@ -17,7 +17,7 @@
 	margin-bottom: 20px;
 	padding: 0;
 	border: 0;
-	border: 16px solid black;
+	border: 20px solid black;
 }
 
 .preview-img {
@@ -105,5 +105,9 @@ a.darken:hover img {
 @media (max-width: 768px) {
 	.work-img {
 		width: 100%;
+	}
+	
+	.work-img {
+		border: 10px solid black;
 	}
 }
