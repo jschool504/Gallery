@@ -2,10 +2,10 @@
 
 <div class="work-container">
 	<img max-width="<%= (work.width * 100) %>px !important" max-height="<%= (work.height * 100) %>px !important" class="work-img" src="<%= work.image %>">
-</div>
-<div class="infobar">
-	<p class="infobar-title"><%= work.title %></p>
-	<p class="infobar-info"><%= work.info %></p>
+	<div max-width="<%= (work.width * 100) %>px !important" class="infobar">
+		<p class="infobar-title"><%= work.title %></p>
+		<p class="infobar-info"><%= work.info %></p>
+	</div>
 </div>
 
 <% include ../partials/footer %>

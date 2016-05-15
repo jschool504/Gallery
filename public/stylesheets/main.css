@@ -45,11 +45,6 @@
 	margin-top: 10px;
 	font-size: 15pt;
 	font-weight: bold;
-	color: lightgray;
-}
-
-.infobar-info {
-	color: lightgray;
 }
 
 html, body {
@@ -105,9 +100,11 @@ a.darken:hover img {
 @media (max-width: 768px) {
 	.work-img {
 		width: 100%;
+		border: 10px solid black;
 	}
 	
-	.work-img {
-		border: 10px solid black;
+	.infobar {
+		margin-left: -20px;
+		margin-right: -20px;
 	}
 }
