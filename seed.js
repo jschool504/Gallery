@@ -20,7 +20,7 @@ function seedDB(connection) {
 		}
 		
 		// create Works table
-		connection.query("CREATE TABLE Works (title VARCHAR(30), image VARCHAR(255), width FLOAT(16), height FLOAT(16), type VARCHAR(16), info VARCHAR(1024))");
+		connection.query("CREATE TABLE Works (id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, title VARCHAR(30), image VARCHAR(255), width FLOAT(16), height FLOAT(16), type VARCHAR(16), info VARCHAR(1024))");
 		// insert new data
 		connection.query("INSERT INTO Works (title, image, width, height, info) VALUES ('Path Through Woods', 'https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/13077069_611152469032084_4995991597519597704_n.jpg?oh=7e9c2da1265d6207b13f4e59252471dd&oe=57ACE9E8', 6, 4, 'This is Dusk')");
 		connection.query("INSERT INTO Works (title, image, width, height, info) VALUES ('Four Happy Sheep', 'https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/13051737_612315275582470_6500075902303540450_n.jpg?oh=e2530af2e20250e3a9d9053dd16df10c&oe=579A2A25', 6, 4, 'This is Dawn')");

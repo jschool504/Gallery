@@ -5,7 +5,7 @@
 .thumbnail {
 	position: relative;
 	border: 0;
-    padding: 0;
+	padding: 0;
 }
 
 .work-container {
@@ -18,11 +18,13 @@
 	max-height: 580px;
 	margin-bottom: 20px;
 	padding: 0;
-	border: 20px solid black;
+	box-shadow: 8px 8px 15px #595959;
+	border: 3px solid black;
 }
 
 .preview-img {
-	border: 6px solid black;
+	box-shadow: 6px 6px 15px #595959;
+	border: 2px solid black;
 }
 
 .thumbnail .caption-full {
@@ -64,7 +66,7 @@ textarea {
 }
 
 body {
-	background-image: url("../images/graywood.jpg");
+	background-image: url("../images/grayfabric.jpg");
 	color: white;
 }
 
@@ -139,6 +141,25 @@ a.darken:hover img {
 	
 }
 
+#edit-link:hover {
+	background-color: #cccc00
+}
+
+#add-link {
+	color: black;
+	background-color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: 10px;
+	
+}
+
+#add-link:hover {
+	background-color: #ccc;
+}
+
 #delete-link {
 	color: black;
 	background-color: red;
@@ -146,6 +167,10 @@ a.darken:hover img {
 	padding-bottom: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
+}
+
+#delete-link:hover {
+	background-color: #cc0000
 }
 
 #delete-form {

@@ -20,7 +20,7 @@ app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 
-seedDB(connection);
+//seedDB(connection);
 
 // PASSPORT CONFIGURATION
 
@@ -77,27 +77,48 @@ app.get("/", function(request, response) {
 
 // Works and Gallery
 
+// index
+
 app.get("/works", function(request, response) {
 	connection.query("SELECT * FROM Works", function(error, rows, fields) {
 		response.render("work/index", {works:rows});
 	});
 });
 
-app.get("/works/:title", function(request, response) {
-	connection.query("SELECT * FROM Works WHERE title = '" + request.params.title + "'", function(error, rows, fields) {
+// new
+
+app.get("/works/new", function(request, response) {
+	response.render("work/new");
+});
+
+app.post("/works", function(request, response) {
+	var new_query = "INSERT INTO Works (title, image, width, height, info) VALUES (";
+	var data = "'" + request.body.title + "','" + request.body.image_url + "'," + request.body.width + "," + request.body.height + ",'" + request.body.info + "'";
+	new_query = new_query + data + ")";
+	connection.query(new_query, function(error, rows, fields) {
+		response.redirect("/works");
+	});
+});
+
+// show
+
+app.get("/works/:id", function(request, response) {
+	connection.query("SELECT * FROM Works WHERE id='" + request.params.id + "'", function(error, rows, fields) {
 		response.render("work/show", {work:rows[0]});
 	});
 });
 
-app.get("/works/:title/edit", function(request, response) {
-	connection.query("SELECT * FROM Works WHERE title = '" + request.params.title + "'", function(error, rows, fields) {
+// edit
+
+app.get("/works/:id/edit", function(request, response) {
+	connection.query("SELECT * FROM Works WHERE id='" + request.params.id + "'", function(error, rows, fields) {
 		response.render("work/edit", {work:rows[0]});
 	});
 })
 
-app.put("/works/:title", function(request, response) {
+app.put("/works/:id", function(request, response) {
 	
-	connection.query("UPDATE Works SET title='" + request.body.title + "', image='" + request.body.image_url + "', info='" + request.body.info + "' WHERE title = '" + request.params.title + "'", function(error) {
+	connection.query("UPDATE Works SET title='" + request.body.title + "', image='" + request.body.image_url + "', info='" + request.body.info + "' WHERE id='" + request.params.id + "'", function(error) {
 		if (error) {
 			console.log(error);
 		} else {

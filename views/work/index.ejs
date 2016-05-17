@@ -1,16 +1,15 @@
 <% include ../partials/header %>
 
-<div class="container-fluid">
-	<div class="row">
-		<% works.forEach(function(work) { %>
-			<div class="col-md-4">
-				<div class="thumbnail preview-img darken-img">
-					<a class="darken" href="works/<%= work.title %>"><img height src="<%= work.image %>"/></a>
-					<div class="caption post-content">
-						<span id="preview-title"><%= work.title %></span>
-					</div>
+
+<div class="container-fluid row" style="display: flex; flex-wrap: wrap;">
+	<% works.forEach(function(work) { %>
+		<div class="col-md-4">
+			<div class="thumbnail preview-img darken-img">
+				<a class="darken" href="works/<%= work.id %>"><img height src="<%= work.image %>"/></a>
+				<div class="caption post-content">
+					<span id="preview-title"><%= work.title %></span>
 				</div>
 			</div>
-		<% }); %>
-	</div>
+		</div>
+	<% }); %>
 </div>

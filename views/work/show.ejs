@@ -10,7 +10,7 @@
 		<p class="infobar-info"><%= work.info %></p>
 		<% if (currentUser && currentUser.name == "admin") {%>
 			<p id="admin-paragraph">
-				<a id="edit-link" href="/works/<%= work.title %>/edit">Edit</a>
+				<a id="edit-link" href="/works/<%= work.id %>/edit">Edit</a>
 				<a id="delete-link" href="/works/<%= work.title %>/delete">Delete</a>
 			</p>
 		<% } %>

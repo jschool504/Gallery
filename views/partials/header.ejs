@@ -28,6 +28,7 @@
 						<% if (!currentUser) { %>
 							<li><a id="navbar-link" href="/login">Login</a></li>
 						<% } else { %>
+							<li><a id="add-link" href="/works/new">Add Work</a></li>
 							<li><a id="navbar-link" href="#">Hi, <%= currentUser.name %></a></li>
 							<li><a id="navbar-link" href="/logout">Logout</a></li>
 						<% } %>
