@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+
+<div id="black-panel" class="row">
+	<h1>Edit "<%= work.title %>"</h1>
+	<form id="edit-form" class="form-horizontal" action="/works/<%= work.title %>?_method=PUT" method="post">
+		<div class="form-group">
+			<input class="form-control" type="text" name="title" placeholder="Title" value="<%= work.title %>">
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="number" name="width" placeholder="Width (in)" value="<%= work.width %>">
+			<input class="form-control" type="number" name="height" placeholder="Height (in)" value="<%= work.height %>">
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="url" name="image_url" placeholder="Image URL" value="<%= work.image %>">
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" rows="5" name="info" placeholder="Info"><%= work.info %></textarea>
+		</div>
+		<div class="form-group">
+			<button class="form-control" class="btn btn-primary">Submit!</button>
+		</div>
+	</form>
+</div>
+
+<% include ../partials/footer %>

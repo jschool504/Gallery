@@ -1,10 +1,20 @@
 <% include ../partials/header %>
 
 <div class="work-container">
-	<img max-width="<%= (work.width * 100) %>px !important" max-height="<%= (work.height * 100) %>px !important" class="work-img" src="<%= work.image %>">
-	<div max-width="<%= (work.width * 100) %>px !important" class="infobar">
+	<div class="work-img-container">
+		<img class="work-img" src="<%= work.image %>">
+	</div>
+	<div class="infobar">
 		<p class="infobar-title"><%= work.title %></p>
+		<p><%= work.width %>"x<%= work.height %>" <%= work.type %></p>
 		<p class="infobar-info"><%= work.info %></p>
+		<% if (currentUser && currentUser.name == "admin") {%>
+			<p id="admin-paragraph">
+				<a id="edit-link" href="/works/<%= work.title %>/edit">Edit</a>
+				<a id="delete-link" href="/works/<%= work.title %>/delete">Delete</a>
+			</p>
+		<% } %>
+			
 	</div>
 </div>
 

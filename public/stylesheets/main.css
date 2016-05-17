@@ -14,18 +14,24 @@
 }
 
 .work-img {
+	max-width: 750px;
+	max-height: 580px;
 	margin-bottom: 20px;
 	padding: 0;
-	border: 0;
 	border: 20px solid black;
 }
 
 .preview-img {
-	border: 4px solid black;
+	border: 6px solid black;
 }
 
 .thumbnail .caption-full {
     padding: 9px;
+}
+
+.navbar {
+	background-color: black;
+	opacity: 0.85
 }
 
 .navbar-form {
@@ -37,8 +43,8 @@
 	padding-bottom: 2px;
 	padding-left: 16px;
 	padding-right: 16px;
-	background-color: #181818;
-	color: lightgray;
+	background-color: black;
+	color: white;
 }
 
 .infobar-title {
@@ -53,8 +59,12 @@ html, body {
     padding: 0;
 }
 
+textarea {
+	resize: vertical;
+}
+
 body {
-	background-image: url("../images/background.png");
+	background-image: url("../images/graywood.jpg");
 	color: white;
 }
 
@@ -79,6 +89,10 @@ a.darken:hover img {
 	position: absolute;
 }
 
+#navbar-brand {
+	color: white;
+}
+
 #navbar-link {
 	color: white;
 }
@@ -93,14 +107,66 @@ a.darken:hover img {
 	font-size: 12pt;
 }
 
+#login-form {
+	color: black;
+}
+
+#edit-form {
+	margin: 0px 40px;
+	color: black;
+}
+
+#black-panel {
+	text-align: center;
+	background-color: black;
+	margin: 0px 20px;
+	padding-top: 5px;
+	padding-bottom: 20px;
+}
+
+#admin-paragraph {
+	margin-bottom: 15px;
+}
+
+#edit-link {
+	color: black;
+	background-color: yellow;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-right: 5px;
+	
+}
+
+#delete-link {
+	color: black;
+	background-color: red;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
 #delete-form {
     display: inline;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1000px) {
+	.work-img-container {
+		float: left;
+		margin-right: 20px;
+	}
+	
+	.infobar {
+		overflow: auto;
+	}
+}
+
+@media (max-width: 1000px) {
+	
 	.work-img {
 		width: 100%;
-		border: 10px solid black;
 	}
 	
 	.infobar {
