@@ -1,0 +1,21 @@
+<% include ../partials/header %>
+
+<div id="black-panel" class="row">
+	<h1>New Post</h1>
+	<form id="edit-form" class="form-horizontal" action="/posts" method="post">
+		<div class="form-group">
+			<input class="form-control" type="text" name="title" placeholder="Title">
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="date" name="date" placeholder="Date">
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" rows="5" name="content" placeholder="Content"></textarea>
+		</div>
+		<div class="form-group">
+			<button class="form-control" class="btn btn-primary">Submit!</button>
+		</div>
+	</form>
+</div>
+
+<% include ../partials/footer %>

@@ -55,6 +55,10 @@
 	font-weight: bold;
 }
 
+.col-lg-1 {
+	padding-right: 5px;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -109,6 +113,68 @@ a.darken:hover img {
 	font-size: 12pt;
 }
 
+#post-panel {
+	background-color: black;
+	margin-bottom: 20px;
+	padding-top: 5px;
+	padding-bottom: 20px;
+	max-width: 700px;
+	margin: auto;
+}
+
+#post-h1 {
+	padding-left: 20px;
+	padding-right: 20px;
+	font-size: 24pt;
+}
+
+#post-content {
+	font-size: 14pt;
+	display: block;
+	margin-left:20px;
+	margin-right:20px;
+}
+
+#post-date {
+	font-size: 12pt;
+	font-style: italic;
+	margin-right:20px;
+	margin-left: 20px;
+}
+
+#preview-post-panel {
+	max-width: 200px;
+	text-align: left;
+	background-color: #1a1a1a;
+	border: 2px solid black;
+	color: white;
+	box-shadow: 5px 5px 10px #595959;
+	margin-bottom: 20px;
+	padding: 15px;
+}
+
+#preview-post-title {
+	color: white;
+	font-weight: bold;
+	font-size: 12pt;
+	padding-bottom: 15px;
+}
+
+#preview-post-date {
+	color: white;
+	font-style: italic;
+	font-size: 8pt;
+	margin-bottom: 0px;
+}
+
+#post-container {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+	margin-left: 5px;
+	margin-right: 0px;
+}
+
 #login-form {
 	color: black;
 }
@@ -121,7 +187,9 @@ a.darken:hover img {
 #black-panel {
 	text-align: center;
 	background-color: black;
-	margin: 0px 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
 	padding-top: 5px;
 	padding-bottom: 20px;
 }
@@ -130,11 +198,16 @@ a.darken:hover img {
 	margin-bottom: 15px;
 }
 
+#post-admin-paragraph {
+	margin-top: 15px;
+	margin-left: 20px;
+}
+
 #edit-link {
 	color: black;
 	background-color: yellow;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 7px;
+	padding-bottom: 7px;
 	padding-left: 10px;
 	padding-right: 10px;
 	margin-right: 5px;
@@ -162,6 +235,7 @@ a.darken:hover img {
 
 #delete-link {
 	color: black;
+	border: 0;
 	background-color: red;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -189,7 +263,6 @@ a.darken:hover img {
 }
 
 @media (max-width: 1000px) {
-	
 	.work-img {
 		width: 100%;
 	}
@@ -197,5 +270,30 @@ a.darken:hover img {
 	.infobar {
 		margin-left: -20px;
 		margin-right: -20px;
+	}
+}
+
+@media (max-width: 480px) {
+	.col-lg-1 {
+		width: 100%;
+		padding-right: 20px;
+	}
+	
+	#preview-post-panel {
+		max-width: none;
+		
+	}
+}
+
+@media (min-width: 1200px) {
+	.col-lg-1 {
+		width: auto;
+	}
+}
+
+@media (max-width: 740px) {
+	#post-panel {
+		margin-left: 20px;
+		margin-right: 20px;
 	}
 }

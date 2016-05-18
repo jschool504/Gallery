@@ -20,7 +20,7 @@ app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 
-//seedDB(connection);
+seedDB(connection, "Posts");
 
 // PASSPORT CONFIGURATION
 
@@ -118,14 +118,75 @@ app.get("/works/:id/edit", function(request, response) {
 
 app.put("/works/:id", function(request, response) {
 	
-	connection.query("UPDATE Works SET title='" + request.body.title + "', image='" + request.body.image_url + "', info='" + request.body.info + "' WHERE id='" + request.params.id + "'", function(error) {
+	connection.query("UPDATE Works SET title='" + request.body.title + "', image='" + request.body.image_url + "', info='" + request.body.info + "' WHERE id='" + request.params.id + "'", function(error, rows) {
 		if (error) {
 			console.log(error);
 		} else {
-			response.redirect("/works/" + request.body.title);
+			console.log(request.body.id);
+			response.redirect("/works/" + request.params.id);
 		}
 	});
 })
+
+// delete
+
+app.delete("/works/:id", function(request, response) {
+	connection.query("DELETE FROM Works WHERE id=" + request.params.id, function(error, rows, fields) {
+		response.redirect("/works");
+	});
+});
+
+// Posts
+
+// index
+
+app.get("/posts", function(request, response) {
+	connection.query("SELECT * FROM Posts", function(error, rows, fields) {
+		response.render("post/index", {posts:rows});
+	})
+})
+
+// add
+
+app.get("/posts/new", function(request, response) {
+	response.render("post/new");
+});
+
+app.post("/posts", function(request, response) {
+	connection.query("INSERT INTO Posts (title, date, content) VALUES ('" + request.body.title + "','" + request.body.date + "','" + request.body.content + "')", function(error, rows, fields) {
+		response.redirect("/posts");
+	});
+});
+
+// edit
+
+app.get("/posts/:id/edit", function(request, response) {
+	connection.query("SELECT * FROM Posts WHERE id=" + request.params.id, function(error, rows, fields) {
+		response.render("post/edit", {post:rows[0]});
+	});
+})
+
+app.put("/posts/:id", function(request, response) {
+	connection.query("UPDATE Posts SET title='" + request.body.title + "',date='" + request.body.date + "'content='" + request.body.content + "' WHERE id=" + request.params.id, function(error, rows, fields) {
+		
+	});
+});
+
+// delete
+
+app.delete("/posts/:id", function(request, response) {
+	connection.query("DELETE FROM Posts WHERE id=" + request.params.id, function(error, rows, fields) {
+		response.redirect("/posts");
+	});
+});
+
+// show
+
+app.get("/posts/:id", function(request, response) {
+	connection.query("SELECT * FROM Posts WHERE id=" + request.params.id, function(error, rows, fields) {
+		response.render("post/show", {post:rows[0]});
+	});
+});
 
 // User auth
 

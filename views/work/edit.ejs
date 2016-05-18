@@ -2,7 +2,7 @@
 
 <div id="black-panel" class="row">
 	<h1>Edit "<%= work.title %>"</h1>
-	<form id="edit-form" class="form-horizontal" action="/works/<%= work.title %>?_method=PUT" method="post">
+	<form id="edit-form" class="form-horizontal" action="/works/<%= work.id %>?_method=PUT" method="post">
 		<div class="form-group">
 			<input class="form-control" type="text" name="title" placeholder="Title" value="<%= work.title %>">
 		</div>

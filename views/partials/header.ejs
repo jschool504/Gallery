@@ -22,6 +22,7 @@
 				<div id="menu" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li><a id="navbar-link" href="/works">Gallery</a></li>
+						<li><a id="navbar-link" href="/posts">Blog</a></li>
 						<li><a id="navbar-link" href="/about">About</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -29,6 +30,7 @@
 							<li><a id="navbar-link" href="/login">Login</a></li>
 						<% } else { %>
 							<li><a id="add-link" href="/works/new">Add Work</a></li>
+							<li><a id="add-link" href="/posts/new">Add Post</a></li>
 							<li><a id="navbar-link" href="#">Hi, <%= currentUser.name %></a></li>
 							<li><a id="navbar-link" href="/logout">Logout</a></li>
 						<% } %>
