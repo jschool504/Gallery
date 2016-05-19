@@ -1,8 +1,8 @@
 <% include ../partials/header %>
 
-<div id="black-panel" class="row">
+<div class="black-panel row">
 	<h1>Edit "<%= work.title %>"</h1>
-	<form id="edit-form" class="form-horizontal" action="/works/<%= work.id %>?_method=PUT" method="post">
+	<form class="edit-form" action="/works/<%= work.id %>?_method=PUT" method="post">
 		<div class="form-group">
 			<input class="form-control" type="text" name="title" placeholder="Title" value="<%= work.title %>">
 		</div>

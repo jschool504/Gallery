@@ -4,8 +4,8 @@
 <div id="post-container" class="container-fluid row">
 	<% posts.forEach(function(post) { %>
 		<div class="col-lg-1">
-			<div id="preview-post-panel">
-				<a id="preview-post-title" href="posts/<%= post.id %>"><%= post.title %><p id="preview-post-date"><%= post.date %></p></a>
+			<div class="preview-post-panel">
+				<a href="posts/<%= post.id %>"><%= post.title %><p><%= post.date %></p></a>
 			</div>
 		</div>
 	<% }); %>

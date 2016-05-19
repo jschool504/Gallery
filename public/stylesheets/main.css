@@ -2,12 +2,12 @@
 	border-radius: 0 !important;
 }
 
-.thumbnail {
-	position: relative;
-	border: 0;
+.row {
+	margin: 0;
 	padding: 0;
 }
 
+/* Work Show Page */
 .work-container {
 	margin-left: 20px;
 	margin-right: 20px;
@@ -22,41 +22,21 @@
 	border: 3px solid black;
 }
 
-.preview-img {
-	box-shadow: 6px 6px 15px #595959;
-	border: 2px solid black;
-}
-
-.thumbnail .caption-full {
-    padding: 9px;
-}
-
-.navbar {
-	background-color: black;
-	opacity: 0.85
-}
-
-.navbar-form {
-	border: none;
+#admin-paragraph {
+	margin-bottom: 15px;
 }
 
 .infobar {
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-left: 16px;
-	padding-right: 16px;
+	max-width: 400px;
+	padding: 20px;
 	background-color: black;
 	color: white;
 }
 
-.infobar-title {
-	margin-top: 10px;
+.infobar>h1 {
 	font-size: 15pt;
 	font-weight: bold;
-}
-
-.col-lg-1 {
-	padding-right: 5px;
+	margin: 0;
 }
 
 html, body {
@@ -78,72 +58,74 @@ em {
     color: gray;
 }
 
-.darken-img {
+/* Navbar */
+
+.navbar {
 	background-color: black;
+	opacity: 0.85
+}
+
+.navbar-brand {
+	color: white;
+}
+
+.navbar-link {
+	color: white;
+}
+
+.navbar-nav>li>a.add-link {
+	color: black;
+	background-color: white;
+	margin: 10px 0px;
+	padding: 5px 10px;
+}
+
+.navbar-nav>li>a.add-link:hover {
+	background-color: #ccc;
+	color: black;
+}
+
+/* Gallery page */
+
+.thumbnail {
+	position: relative;
+	padding: 0;
+	min-height: 100px;
+	background-color: black;
+	border: 2px solid black;
+	box-shadow: 5px 5px 10px #595959;
 }
 
 a.darken:hover img {
 	opacity: 0.75;
 }
 
-.post-content {
-	background: black;
-	opacity: 0.85;
-	width: 100%;
-	top: 0;
-	left: 0;
-	position: absolute;
-}
-
-#navbar-brand {
-	color: white;
-}
-
-#navbar-link {
-	color: white;
-}
-
-#preview-image {
-	position: relative;
-}
-
-#preview-title {
+span.preview-title {
 	color: white;
 	font-weight: bold;
 	font-size: 12pt;
 }
 
-#post-panel {
-	background-color: black;
-	margin-bottom: 20px;
-	padding-top: 5px;
-	padding-bottom: 20px;
-	max-width: 700px;
-	margin: auto;
+div.preview-title-content {
+	background: black;
+	opacity: 0.85;
+	width: 100%;
+	padding: 5px 10px;
+	top: 0;
+	left: 0;
+	position: absolute;
 }
 
-#post-h1 {
+/* Post List */
+
+.col-lg-1 {
+	width: 225px;
 	padding-left: 20px;
-	padding-right: 20px;
-	font-size: 24pt;
+	padding-right: 0;
+	padding-bottom: 0px;
 }
 
-#post-content {
-	font-size: 14pt;
-	display: block;
-	margin-left:20px;
-	margin-right:20px;
-}
-
-#post-date {
-	font-size: 12pt;
-	font-style: italic;
-	margin-right:20px;
-	margin-left: 20px;
-}
-
-#preview-post-panel {
-	max-width: 200px;
+.preview-post-panel {
 	text-align: left;
 	background-color: #1a1a1a;
 	border: 2px solid black;
@@ -153,14 +135,14 @@ a.darken:hover img {
 	padding: 15px;
 }
 
-#preview-post-title {
+.preview-post-panel>a {
 	color: white;
 	font-weight: bold;
 	font-size: 12pt;
 	padding-bottom: 15px;
 }
 
-#preview-post-date {
+.preview-post-panel>a>p {
 	color: white;
 	font-style: italic;
 	font-size: 8pt;
@@ -170,40 +152,73 @@ a.darken:hover img {
 #post-container {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 0;
-	margin-left: 5px;
-	margin-right: 0px;
+}
+
+/* Post Show Page */
+
+.post-panel {
+	background-color: black;
+	margin-bottom: 20px;
+	padding-top: 5px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	max-width: 700px;
+	margin: auto;
+}
+
+.post-panel>h1 {
+	font-size: 24pt;
+}
+
+.post-panel>div {
+	font-size: 14pt;
+	display: block;
+}
+
+.post-panel>p {
+	font-size: 12pt;
+	font-style: italic;
 }
 
 #login-form {
 	color: black;
 }
 
-#edit-form {
-	margin: 0px 40px;
+.edit-form {
 	color: black;
 }
 
-#black-panel {
-	text-align: center;
-	background-color: black;
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-bottom: 20px;
-	padding-top: 5px;
-	padding-bottom: 20px;
+.form-group {
+	margin-bottom: 0px;
+	margin-top: 15px;
 }
 
-#admin-paragraph {
-	margin-bottom: 15px;
+.black-panel {
+	width: 768px;
+	min-width: 400px;
+	text-align: center;
+	background-color: black;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+}
+
+.black-panel>h1 {
+	margin: 0;
+}
+
+.black-panel>h3 {
+	margin-top: 15px;
 }
 
 #post-admin-paragraph {
 	margin-top: 15px;
-	margin-left: 20px;
 }
 
-#edit-link {
+/* Edit link */
+
+a.edit-link {
 	color: black;
 	background-color: yellow;
 	padding-top: 7px;
@@ -214,26 +229,14 @@ a.darken:hover img {
 	
 }
 
-#edit-link:hover {
-	background-color: #cccc00
+a.edit-link:hover {
+	background-color: #cccc00;
+	text-decoration: none;
 }
 
-#add-link {
-	color: black;
-	background-color: white;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-top: 10px;
-	
-}
+/* Delete form/button */
 
-#add-link:hover {
-	background-color: #ccc;
-}
-
-#delete-link {
+.delete-form>button {
 	color: black;
 	border: 0;
 	background-color: red;
@@ -243,13 +246,16 @@ a.darken:hover img {
 	padding-right: 10px;
 }
 
-#delete-link:hover {
+.delete-form>button:hover {
 	background-color: #cc0000
 }
 
-#delete-form {
+.delete-form {
     display: inline;
+    font-size: 11pt;
 }
+
+/**/
 
 @media (min-width: 1000px) {
 	.work-img-container {
@@ -262,6 +268,28 @@ a.darken:hover img {
 	}
 }
 
+@media (min-width: 768px) {
+	.col-sm-3 {
+		width: 300px;
+	}
+}
+
+@media (max-width: 768px) {
+	.black-panel {
+		min-width: none;
+		width: auto;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+}
+
+@media (max-width: 480px) {
+	.col-lg-1 {
+		padding-right: 20px;
+		width: 100%;
+	}
+}
+
 @media (max-width: 1000px) {
 	.work-img {
 		width: 100%;
@@ -270,29 +298,13 @@ a.darken:hover img {
 	.infobar {
 		margin-left: -20px;
 		margin-right: -20px;
-	}
-}
-
-@media (max-width: 480px) {
-	.col-lg-1 {
-		width: 100%;
-		padding-right: 20px;
-	}
-	
-	#preview-post-panel {
 		max-width: none;
 		
 	}
 }
 
-@media (min-width: 1200px) {
-	.col-lg-1 {
-		width: auto;
-	}
-}
-
 @media (max-width: 740px) {
-	#post-panel {
+	.post-panel {
 		margin-left: 20px;
 		margin-right: 20px;
 	}

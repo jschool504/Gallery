@@ -117,7 +117,6 @@ app.get("/works/:id/edit", function(request, response) {
 })
 
 app.put("/works/:id", function(request, response) {
-	
 	connection.query("UPDATE Works SET title='" + request.body.title + "', image='" + request.body.image_url + "', info='" + request.body.info + "' WHERE id='" + request.params.id + "'", function(error, rows) {
 		if (error) {
 			console.log(error);
@@ -167,8 +166,13 @@ app.get("/posts/:id/edit", function(request, response) {
 })
 
 app.put("/posts/:id", function(request, response) {
-	connection.query("UPDATE Posts SET title='" + request.body.title + "',date='" + request.body.date + "'content='" + request.body.content + "' WHERE id=" + request.params.id, function(error, rows, fields) {
-		
+	console.log(request);
+	connection.query("UPDATE Posts SET title='" + request.body.title + "',date='" + request.body.date + "',content='" + request.body.content + "' WHERE id=" + request.params.id, function(error, rows, fields) {
+		if (error) {
+			response.redirect("/posts/" + rows[0].id + "/edit", {post:rows[0]});
+			console.log(error);
+		}
+		response.redirect("/posts/" + request.params.id);
 	});
 });
 

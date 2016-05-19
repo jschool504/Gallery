@@ -1,14 +1,14 @@
 <% include ../partials/header %>
 
-<div id="post-panel">
-	<h1 id="post-h1"><%= post.title %></h1>
-	<p id="post-date"><%= post.date %></p>
-	<div id="post-content"><%= post.content %></div>
+<div class="post-panel">
+	<h1><%= post.title %></h1>
+	<p><%= post.date %></p>
+	<div><%= post.content %></div>
 	<% if (currentUser && currentUser.name == "admin") {%>
 		<div id="post-admin-paragraph">
-			<form id="delete-form" action="<%= post.id %>?_method=DELETE" method="post">
-				<a id="edit-link" href="<%= post.id %>/edit">Edit</a>
-				<button id="delete-link">Delete</button>
+			<form class="delete-form" action="<%= post.id %>?_method=DELETE" method="post">
+				<a class="edit-link" href="<%= post.id %>/edit">Edit</a>
+				<button>Delete</button>
 			</form>
 		</div>
 	<% } %>

@@ -5,16 +5,16 @@
 		<img class="work-img" src="<%= work.image %>">
 	</div>
 	<div class="infobar">
-		<p class="infobar-title"><%= work.title %></p>
+		<h1><%= work.title %></h1>
 		<p><%= work.width %>"x<%= work.height %>" <%= work.type %></p>
 		<p class="infobar-info"><%= work.info %></p>
 		<% if (currentUser && currentUser.name == "admin") {%>
-			<p id="admin-paragraph">
-				<form id="delete-form" action="<%= work.id %>?_method=DELETE" method="post">
-					<a id="edit-link" href="<%= work.id %>/edit">Edit</a>
-					<button id="delete-link">Delete</button>
+			<div id="post-admin-paragraph">
+				<form class="delete-form" action="<%= work.id %>?_method=DELETE" method="post">
+					<a class="edit-link" href="<%= work.id %>/edit">Edit</a>
+					<button class="delete-link">Delete</button>
 				</form>
-			</p>
+			</div>
 		<% } %>
 			
 	</div>
