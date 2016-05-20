@@ -79,8 +79,22 @@ app.get("/", function(request, response) {
 
 // index
 
+app.get("/works/search", function(request, response) {
+	var search_query = "SELECT * FROM Works WHERE title LIKE '%" + request.query.q + "%'";
+	console.log(search_query);
+	connection.query(search_query, function(error, rows, fields) {
+		if (error) {
+			console.log(error);
+		}
+		
+		response.render("work/index", {works:rows});
+	});
+});
+
 app.get("/works", function(request, response) {
-	connection.query("SELECT * FROM Works", function(error, rows, fields) {
+	var show_query = "SELECT * FROM Works";
+	console.log(show_query);
+	connection.query(show_query, function(error, rows, fields) {
 		response.render("work/index", {works:rows});
 	});
 });
@@ -92,10 +106,15 @@ app.get("/works/new", function(request, response) {
 });
 
 app.post("/works", function(request, response) {
-	var new_query = "INSERT INTO Works (title, image, width, height, info) VALUES (";
-	var data = "'" + request.body.title + "','" + request.body.image_url + "'," + request.body.width + "," + request.body.height + ",'" + request.body.info + "'";
+	var new_query = "INSERT INTO Works (title, image, width, height, type, info) VALUES (";
+	var data = "'" + request.body.title + "','" + request.body.image_url + "'," + request.body.width + "," + request.body.height + ",'" + request.body.type + "','" + request.body.info + "'";
 	new_query = new_query + data + ")";
+	console.log(new_query);
 	connection.query(new_query, function(error, rows, fields) {
+		if (error) {
+			console.log(error);
+		}
+		
 		response.redirect("/works");
 	});
 });
@@ -103,7 +122,9 @@ app.post("/works", function(request, response) {
 // show
 
 app.get("/works/:id", function(request, response) {
-	connection.query("SELECT * FROM Works WHERE id='" + request.params.id + "'", function(error, rows, fields) {
+	var show_query = "SELECT * FROM Works WHERE id='" + request.params.id + "'";
+	console.log(show_query);
+	connection.query(show_query, function(error, rows, fields) {
 		response.render("work/show", {work:rows[0]});
 	});
 });
@@ -111,13 +132,17 @@ app.get("/works/:id", function(request, response) {
 // edit
 
 app.get("/works/:id/edit", function(request, response) {
-	connection.query("SELECT * FROM Works WHERE id='" + request.params.id + "'", function(error, rows, fields) {
+	var edit_query = "SELECT * FROM Works WHERE id='" + request.params.id + "'";
+	console.log(edit_query);
+	connection.query(edit_query, function(error, rows, fields) {
 		response.render("work/edit", {work:rows[0]});
 	});
 })
 
 app.put("/works/:id", function(request, response) {
-	connection.query("UPDATE Works SET title='" + request.body.title + "', image='" + request.body.image_url + "', info='" + request.body.info + "' WHERE id='" + request.params.id + "'", function(error, rows) {
+	var update_query = "UPDATE Works SET title='" + request.body.title + "', image='" + request.body.image_url + "', info='" + request.body.info + "' WHERE id='" + request.params.id + "'";
+	console.log(update_query);
+	connection.query(update_query, function(error, rows) {
 		if (error) {
 			console.log(error);
 		} else {
@@ -130,7 +155,9 @@ app.put("/works/:id", function(request, response) {
 // delete
 
 app.delete("/works/:id", function(request, response) {
-	connection.query("DELETE FROM Works WHERE id=" + request.params.id, function(error, rows, fields) {
+	var delete_query = "DELETE FROM Works WHERE id=" + request.params.id;
+	console.log(delete_query);
+	connection.query(delete_query, function(error, rows, fields) {
 		response.redirect("/works");
 	});
 });
