@@ -1,11 +1,20 @@
 <% include ../partials/header %>
 
-<div class="search-bar">
+<div class="search-bar" style="z-index:1;">
 	<input type="text" id="searchField"/>
 	<button id="searchButton">Search</button>
+	<span class="filterLabel">Type:</span>
+	<div class="dropdown">
+		<button id="dropButton" class="dropbtn">Type of Artwork</button>
+		<div id="dropContent" class="dropdown-content">
+			<a href="#">Link</a>
+			<a href="#">Link</a>
+			<a href="#">Link</a>
+		</div>
+	</div>
 </div>
 
-<div class="container-fluid row" style="display: flex; flex-wrap: wrap;">
+<div class="container-fluid row" style="display: flex; flex-wrap: wrap;z-index:-1;">
 	<% works.forEach(function(work) { %>
 		<div class="col-sm-3">
 			<div class="thumbnail">

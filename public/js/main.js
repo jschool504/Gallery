@@ -8,4 +8,8 @@ $(document).ready(function() {
 			location.href = "/works/search?q=" + $("#searchField").val();
 		}
 	});
+	
+	$("#dropButton").click(function() {
+		$("#dropContent").toggle("show");
+	});
 });

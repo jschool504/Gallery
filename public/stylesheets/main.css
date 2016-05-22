@@ -11,6 +11,7 @@
 .work-container {
 	margin-left: 20px;
 	margin-right: 20px;
+	margin-top: 20px;
 }
 
 .work-img {
@@ -86,8 +87,9 @@ em {
 
 .search-bar {
 	background-color: black;
-	padding: 10px;
 	opacity: 0.8;
+	padding: 15px;
+	position: relative;
 }
 
 #searchField {
@@ -101,8 +103,9 @@ em {
 
 #searchButton {
     background-color: white;
+    border: none;
     color: black;
-    border: 1px solid gray;
+    font-size: 12pt;
     padding: 5px 10px;
 }
 
@@ -117,10 +120,16 @@ em {
 	background-color: black;
 	border: 2px solid black;
 	box-shadow: 5px 5px 10px #595959;
+	backface-visibility: hidden;
+}
+
+.thumbnail:hover {
+	transform: scale(1.05) translateZ(0);
+	transition: transform 0.2s;
 }
 
 a.darken:hover img {
-	opacity: 0.75;
+	opacity: 0.95;
 }
 
 span.preview-title {
@@ -137,6 +146,50 @@ div.preview-title-content {
 	top: 0;
 	left: 0;
 	position: absolute;
+}
+
+/* Dropdown */
+
+.filterLabel {
+	font-size: 12pt;
+	margin-left: 30px;
+	margin-right: 8px;
+}
+
+.dropbtn {
+	background-color: white;
+	color: black;
+	padding: 5px 10px;
+	font-size: 12pt;
+	border: none;
+	cursor: pointer;
+}
+
+.dropbtn:focus {
+	background-color: lightgray;
+}
+
+.dropdown {
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 10px 15px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: lightgray;
 }
 
 /* Post List */
@@ -181,13 +234,15 @@ div.preview-title-content {
 
 .post-panel {
 	background-color: black;
+	margin-top: 20px;
 	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
 	padding-top: 5px;
 	padding-bottom: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
 	max-width: 700px;
-	margin: auto;
 }
 
 .post-panel>h1 {
@@ -224,6 +279,7 @@ div.preview-title-content {
 	background-color: black;
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 20px;
 	padding: 20px;
 }
 

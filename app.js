@@ -20,7 +20,7 @@ app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 
-seedDB(connection, "Posts");
+//seedDB(connection, "Works");
 
 // PASSPORT CONFIGURATION
 
