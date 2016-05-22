@@ -51,10 +51,6 @@ body {
 	color: white;
 }
 
-em {
-    color: gray;
-}
-
 /* Navbar */
 
 nav {
@@ -75,16 +71,14 @@ nav {
 	color: white;
 }
 
-.
-
-.navbar-nav>ul>li>a.add-link {
+.navbar-nav>li>a.add-link {
 	color: black;
 	background-color: white;
 	margin: 10px 0px;
 	padding: 5px 10px;
 }
 
-.navbar-nav>ul>li>a.add-link:hover {
+.navbar-nav>li>a.add-link:hover {
 	background-color: #ccc;
 	color: black;
 }
@@ -93,8 +87,7 @@ nav {
 
 .search-bar {
 	background-color: black;
-	opacity: 0.88;
-	border-top: 2px solid gray;
+	opacity: 0.85;
 	padding: 15px;
 	position: relative;
 }
@@ -262,7 +255,6 @@ div.preview-title-content {
 }
 
 .post-panel>div {
-	font-size: 14pt;
 	display: block;
 }
 
@@ -305,6 +297,48 @@ div.preview-title-content {
 
 #post-admin-paragraph {
 	margin-top: 15px;
+}
+
+/* Edit Panel */
+
+#edit-panel {
+	display: inline-block;
+	float: left;
+	width: 40%;
+	margin-left: 20px;
+	margin-right: 0;
+}
+
+#preview-panel {
+	display: inline-block;
+	width: 700px;
+	text-align: left;
+	margin-left: 20px;
+	margin-right: 20px;
+	font-size: 12pt;
+}
+
+.post-css {
+	font-size: 12pt;
+}
+
+.post-css #image {
+	background-color: white;
+	margin-top: 5px;
+}
+
+.post-css img {
+	margin-top: 4px;
+}
+
+.post-css #image>img {
+	width: 100%;
+	margin-top: 0;
+}
+
+.post-css #image>p {
+	color: black;
+	padding: 10px;
 }
 
 /* Edit link */
@@ -367,7 +401,6 @@ a.edit-link:hover {
 
 @media (max-width: 768px) {
 	.black-panel {
-		min-width: none;
 		width: auto;
 		margin-left: 20px;
 		margin-right: 20px;
@@ -403,6 +436,19 @@ a.edit-link:hover {
 		margin-left: -20px;
 		margin-right: -20px;
 		max-width: none;
+	}
+}
+
+@media (max-width: 1200px) {
+	#edit-panel {
+		display: block;
+		float: none;
+		width: auto;
+		margin-right: 20px;
+	}
+	
+	#preview-panel {
+		width: auto;
 	}
 }
 

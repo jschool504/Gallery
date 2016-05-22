@@ -10,6 +10,17 @@ $(document).ready(function() {
 		$("#searchField").val(searchParam.split("&")[0]);
 	}
 	
+	$("#postContent").ready(function() {
+		if($("#postContent")[0] != null) {
+			var postText = $("#postContent")[0].innerText;
+			$("#postContent")[0].innerHTML = postText;
+		}
+	});
+	
+	$("#edit-panel").keyup(function(e) {
+		$("#postContent")[0].innerHTML = $("#editContent").val();
+	});
+	
 	//Event Handlers
 	$("#searchButton").click(function() {
 		location.href = "/works/search?q=" + $("#searchField").val() + "&f=" + $("#dropButton").val();
@@ -21,7 +32,17 @@ $(document).ready(function() {
 		}
 	});
 	
-	$("#dropButton").click(function() {
+	$(document).click(function() {
+		console.log("hi");
+		$("#dropContent").hide();
+	});
+	
+	$("#dropContent").click(function(e) {
+		e.stopPropagation();
+	});
+	
+	$("#dropButton").click(function(e) {
+		e.stopPropagation();
 		$("#dropContent").toggle();
 	});
 	
