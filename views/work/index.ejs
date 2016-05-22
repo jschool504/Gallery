@@ -3,13 +3,14 @@
 <div class="search-bar" style="z-index:1;">
 	<input type="text" id="searchField"/>
 	<button id="searchButton">Search</button>
-	<span class="filterLabel">Type:</span>
 	<div class="dropdown">
-		<button id="dropButton" class="dropbtn">Type of Artwork</button>
+		<span class="filterLabel">Type:</span>
+		<input type="button" id="dropButton" class="dropbtn" value="Any"/>
 		<div id="dropContent" class="dropdown-content">
-			<a href="#">Link</a>
-			<a href="#">Link</a>
-			<a href="#">Link</a>
+			<button class="filter-button">Any</button>
+			<% workTypes.forEach(function(workType) { %>
+				<button class="filter-button"><%= workType.type %></button>
+			<% }); %>
 		</div>
 	</div>
 </div>
@@ -18,7 +19,7 @@
 	<% works.forEach(function(work) { %>
 		<div class="col-sm-3">
 			<div class="thumbnail">
-				<a class="darken" href="works/<%= work.id %>"><img height src="<%= work.image %>"/></a>
+				<a class="darken" href="/works/<%= work.id %>"><img height src="<%= work.image %>"/></a>
 				<div class="preview-title-content">
 					<span class="preview-title"><%= work.title %></span>
 				</div>

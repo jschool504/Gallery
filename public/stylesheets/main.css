@@ -57,9 +57,13 @@ em {
 
 /* Navbar */
 
+nav {
+	border: none;
+}
+
 .navbar {
 	background-color: black;
-	opacity: 0.85;
+	opacity: 0.88;
 	margin-bottom: 0;
 }
 
@@ -71,14 +75,16 @@ em {
 	color: white;
 }
 
-.navbar-nav>li>a.add-link {
+.
+
+.navbar-nav>ul>li>a.add-link {
 	color: black;
 	background-color: white;
 	margin: 10px 0px;
 	padding: 5px 10px;
 }
 
-.navbar-nav>li>a.add-link:hover {
+.navbar-nav>ul>li>a.add-link:hover {
 	background-color: #ccc;
 	color: black;
 }
@@ -87,18 +93,21 @@ em {
 
 .search-bar {
 	background-color: black;
-	opacity: 0.8;
+	opacity: 0.88;
+	border-top: 2px solid gray;
 	padding: 15px;
 	position: relative;
 }
 
 #searchField {
     font-size: 12pt;
-    border: 1px solid gray;
-    padding: 4px;
+    border: none;
+    padding: 5px 4px;
     vertical-align: top;
     background-color: white;
+    margin-right: 8px;
     color: black;
+    outline: 0;
 }
 
 #searchButton {
@@ -124,12 +133,8 @@ em {
 }
 
 .thumbnail:hover {
-	transform: scale(1.05) translateZ(0);
+	transform: scale(1.03) translateZ(0);
 	transition: transform 0.2s;
-}
-
-a.darken:hover img {
-	opacity: 0.95;
 }
 
 span.preview-title {
@@ -156,6 +161,22 @@ div.preview-title-content {
 	margin-right: 8px;
 }
 
+.filter-button {
+	background-color: white;
+	color: black;
+	padding: 5px;
+	margin: 0;
+	font-size: 12pt;
+	border: none;
+	cursor: pointer;
+	display: block;
+	width: 100%;
+}
+
+.filter-button:hover {
+	background-color: lightgray;
+}
+
 .dropbtn {
 	background-color: white;
 	color: black;
@@ -163,9 +184,10 @@ div.preview-title-content {
 	font-size: 12pt;
 	border: none;
 	cursor: pointer;
+	outline: 0;
 }
 
-.dropbtn:focus {
+.dropbtn:hover {
 	background-color: lightgray;
 }
 
@@ -175,21 +197,11 @@ div.preview-title-content {
 
 .dropdown-content {
 	display: none;
+	width: 150px;
+	left: 81px;
 	position: absolute;
 	background-color: #f9f9f9;
-	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-}
-
-.dropdown-content a {
-	color: black;
-	padding: 10px 15px;
-	text-decoration: none;
-	display: block;
-}
-
-.dropdown-content a:hover {
-	background-color: lightgray;
 }
 
 /* Post List */
@@ -360,6 +372,19 @@ a.edit-link:hover {
 		margin-left: 20px;
 		margin-right: 20px;
 	}
+	
+	.dropdown {
+		width: 100%;
+		margin-top: 10px;
+	}
+	
+	.dropdown-content {
+		left: 51px;
+	}
+	
+	.filterLabel {
+		margin-left: 0;
+	}
 }
 
 @media (max-width: 480px) {
@@ -378,7 +403,6 @@ a.edit-link:hover {
 		margin-left: -20px;
 		margin-right: -20px;
 		max-width: none;
-		
 	}
 }
 

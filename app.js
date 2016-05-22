@@ -80,22 +80,46 @@ app.get("/", function(request, response) {
 // index
 
 app.get("/works/search", function(request, response) {
-	var search_query = "SELECT * FROM Works WHERE title LIKE '%" + request.query.q + "%'";
+	var filterTerm = "%";
+	if (request.query.f != "Any") {
+		filterTerm = request.query.f;
+	}
+	
+	var search_query = "SELECT * FROM Works WHERE title LIKE '%" + request.query.q + "%' " + "AND type LIKE '" + filterTerm + "'";
 	console.log(search_query);
-	connection.query(search_query, function(error, rows, fields) {
+	
+	connection.query(search_query, function(error, workRows, fields) {
 		if (error) {
 			console.log(error);
 		}
 		
-		response.render("work/index", {works:rows});
+		var type_query = "SELECT DISTINCT type FROM Works";
+		console.log(type_query);
+		
+		connection.query(type_query, function(error, typeRows, fields) {
+			if (error) {
+				console.log(error);
+			}
+			
+			response.render("work/index", {works:workRows, workTypes:typeRows});
+		});
 	});
 });
 
 app.get("/works", function(request, response) {
 	var show_query = "SELECT * FROM Works";
 	console.log(show_query);
-	connection.query(show_query, function(error, rows, fields) {
-		response.render("work/index", {works:rows});
+	connection.query(show_query, function(error, workRows, fields) {
+		
+		var type_query = "SELECT DISTINCT type FROM Works";
+		console.log(type_query);
+		connection.query(type_query, function(error, typeRows, fields) {
+			if (error) {
+				console.log(error);
+			}
+			
+			response.render("work/index", {works:workRows, workTypes:typeRows});
+		});
 	});
 });
 
@@ -140,7 +164,7 @@ app.get("/works/:id/edit", function(request, response) {
 })
 
 app.put("/works/:id", function(request, response) {
-	var update_query = "UPDATE Works SET title='" + request.body.title + "', image='" + request.body.image_url + "', info='" + request.body.info + "' WHERE id='" + request.params.id + "'";
+	var update_query = "UPDATE Works SET title='" + request.body.title + "', image='" + request.body.image_url + "', type='" + request.body.type + "', info='" + request.body.info + "' WHERE id='" + request.params.id + "'";
 	console.log(update_query);
 	connection.query(update_query, function(error, rows) {
 		if (error) {
