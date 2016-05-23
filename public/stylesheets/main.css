@@ -69,16 +69,21 @@ nav {
 }
 
 .navbar-nav>li>a.navbar-link {
+	transition: 0.3s background-color;
+	padding: 15px 15px;
+	margin: 0;
 	color: white;
 	background-color: black;
 }
 
 .navbar-nav>li>a.navbar-link:hover {
+	transition: 0.3s background-color;
 	background-color: white;
 	color: black;
 }
 
 .navbar-nav>li>a.add-link {
+	transition: 0.3s background-color;
 	color: black;
 	background-color: white;
 	margin: 10px 0px;
@@ -86,6 +91,7 @@ nav {
 }
 
 .navbar-nav>li>a.add-link:hover {
+	transition: 0.3s background-color;
 	background-color: #ccc;
 	color: black;
 }
@@ -111,19 +117,23 @@ nav {
 }
 
 #searchButton {
+	transition: 0.3s background-color;
     background-color: white;
     margin-left: 15px;
     border: none;
     color: black;
     font-size: 12pt;
     padding: 5px 10px;
+    float: right;
 }
 
 #searchButton:hover {
+	transition: 0.3s background-color;
 	background-color: lightgray;
 }
 
 .thumbnail {
+	transition: transform 0.2s;
 	position: relative;
 	padding: 0;
 	min-height: 100px;
@@ -163,6 +173,7 @@ div.preview-title-content {
 }
 
 .type-menu-button, .width-menu-button, .height-menu-button {
+	transition: 0.3s background-color;
 	background-color: white;
 	color: black;
 	padding: 5px 15px;
@@ -175,10 +186,12 @@ div.preview-title-content {
 }
 
 .type-menu-button:hover, .width-menu-button:hover, .height-menu-button:hover {
+	transition: 0.3s background-color;
 	background-color: lightgray;
 }
 
 .dropbtn {
+	transition: 0.3s background-color;
 	background-color: white;
 	color: black;
 	padding: 5px 10px;
@@ -189,6 +202,7 @@ div.preview-title-content {
 }
 
 .dropbtn:hover {
+	transition: 0.3s background-color;
 	background-color: lightgray;
 }
 
@@ -352,6 +366,7 @@ div.preview-title-content {
 }
 
 .post-edit-button {
+	transition: 0.3s background-color;
 	background-color: white;
 	color: black;
 	border: none;
@@ -361,6 +376,7 @@ div.preview-title-content {
 }
 
 .post-edit-button:hover {
+	transition: 0.3s background-color;
 	background-color: lightgray;
 }
 
@@ -426,6 +442,7 @@ div.preview-title-content {
 /* Edit link */
 
 a.edit-link {
+	transition: 0.3s background-color;
 	color: black;
 	background-color: yellow;
 	padding-top: 7px;
@@ -437,6 +454,7 @@ a.edit-link {
 }
 
 a.edit-link:hover {
+	transition: 0.3s background-color;
 	background-color: #cccc00;
 	text-decoration: none;
 }
@@ -444,6 +462,7 @@ a.edit-link:hover {
 /* Delete form/button */
 
 .delete-form>button {
+	transition: 0.3s background-color;
 	color: black;
 	border: 0;
 	background-color: red;
@@ -454,6 +473,7 @@ a.edit-link:hover {
 }
 
 .delete-form>button:hover {
+	transition: 0.3s background-color;
 	background-color: #cc0000
 }
 
@@ -500,6 +520,7 @@ a.edit-link:hover {
 		width: 100%;
 		margin-top: 10px;
 		margin-left: 0;
+		float: none;
 	}
 	
 	.dropdown-content {

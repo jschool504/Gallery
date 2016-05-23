@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var passport = require("passport");
+var bcrypt = require("bcrypt-nodejs");
 var LocalStrategy = require("passport-local");
 var app = express();
 
@@ -43,7 +44,7 @@ passport.use(new LocalStrategy(
 				return done(null, false, {message: "I think that's the wrong username :-("});
 			}
 			
-			if (user.password !== password) {
+			if (!bcrypt.compareSync(password, user.password)) {
 				return done(null, false, {message: "Sorry that's the wrong password :-("})
 			}
 			

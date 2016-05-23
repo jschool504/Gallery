@@ -1,5 +1,6 @@
 var express = require("express");
 var db = require("../models/db");
+var middleware = require("../middleware");
 var router = express.Router();
 
 var connection = db.getConnection();
@@ -16,11 +17,11 @@ router.get("/posts", function(request, response) {
 
 // add
 
-router.get("/posts/new", function(request, response) {
+router.get("/posts/new", middleware.isLoggedIn, function(request, response) {
 	response.render("post/new");
 });
 
-router.post("/posts", function(request, response) {
+router.post("/posts", middleware.isLoggedIn, function(request, response) {
 	connection.query("INSERT INTO Posts (title, date, content) VALUES ('" + request.body.title + "','" + request.body.date + "','" + request.body.content + "')", function(error, rows, fields) {
 		response.redirect("/posts");
 	});
@@ -28,13 +29,13 @@ router.post("/posts", function(request, response) {
 
 // edit
 
-router.get("/posts/:id/edit", function(request, response) {
+router.get("/posts/:id/edit", middleware.isLoggedIn, function(request, response) {
 	connection.query("SELECT * FROM Posts WHERE id=" + request.params.id, function(error, rows, fields) {
 		response.render("post/edit", {post:rows[0]});
 	});
 })
 
-router.put("/posts/:id", function(request, response) {
+router.put("/posts/:id", middleware.isLoggedIn, function(request, response) {
 	console.log(request.body.content);
 	connection.query("UPDATE Posts SET title='" + request.body.title + "',date='" + request.body.date + "',content='" + request.body.content + "' WHERE id=" + request.params.id, function(error, rows, fields) {
 		if (error) {
@@ -47,7 +48,7 @@ router.put("/posts/:id", function(request, response) {
 
 // delete
 
-router.delete("/posts/:id", function(request, response) {
+router.delete("/posts/:id", middleware.isLoggedIn, function(request, response) {
 	connection.query("DELETE FROM Posts WHERE id=" + request.params.id, function(error, rows, fields) {
 		response.redirect("/posts");
 	});

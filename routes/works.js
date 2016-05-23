@@ -1,5 +1,6 @@
 var express = require("express");
 var db = require("../models/db");
+var middleware = require("../middleware");
 var router = express.Router();
 
 var connection = db.getConnection();
@@ -99,11 +100,11 @@ router.get("/works", function(request, response) {
 
 // new
 
-router.get("/works/new", function(request, response) {
+router.get("/works/new", middleware.isLoggedIn, function(request, response) {
 	response.render("work/new");
 });
 
-router.post("/works", function(request, response) {
+router.post("/works", middleware.isLoggedIn, function(request, response) {
 	var new_query = "INSERT INTO Works (title, image, width, height, type, info) VALUES (";
 	var data = "'" + request.body.title + "','" + request.body.image_url + "'," + request.body.width + "," + request.body.height + ",'" + request.body.type + "','" + request.body.info + "'";
 	new_query = new_query + data + ")";
@@ -129,7 +130,7 @@ router.get("/works/:id", function(request, response) {
 
 // edit
 
-router.get("/works/:id/edit", function(request, response) {
+router.get("/works/:id/edit", middleware.isLoggedIn, function(request, response) {
 	var edit_query = "SELECT * FROM Works WHERE id='" + request.params.id + "'";
 	console.log(edit_query);
 	connection.query(edit_query, function(error, rows, fields) {
@@ -137,7 +138,7 @@ router.get("/works/:id/edit", function(request, response) {
 	});
 })
 
-router.put("/works/:id", function(request, response) {
+router.put("/works/:id", middleware.isLoggedIn, function(request, response) {
 	var update_query = "UPDATE Works SET title='" + request.body.title + "', image='" + request.body.image_url + "', type='" + request.body.type + "', info='" + request.body.info + "' WHERE id='" + request.params.id + "'";
 	console.log(update_query);
 	connection.query(update_query, function(error, rows) {
@@ -152,7 +153,7 @@ router.put("/works/:id", function(request, response) {
 
 // delete
 
-router.delete("/works/:id", function(request, response) {
+router.delete("/works/:id", middleware.isLoggedIn, function(request, response) {
 	var delete_query = "DELETE FROM Works WHERE id=" + request.params.id;
 	console.log(delete_query);
 	connection.query(delete_query, function(error, rows, fields) {
