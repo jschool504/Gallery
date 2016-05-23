@@ -112,6 +112,7 @@ nav {
 
 #searchButton {
     background-color: white;
+    margin-left: 15px;
     border: none;
     color: black;
     font-size: 12pt;
@@ -155,16 +156,16 @@ div.preview-title-content {
 
 /* Dropdown */
 
-.filterLabel {
+#typeLabel, #widthLabel, #heightLabel {
 	font-size: 12pt;
-	margin-left: 30px;
+	margin-left: 10px;
 	margin-right: 8px;
 }
 
-.filter-button {
+.type-menu-button, .width-menu-button, .height-menu-button {
 	background-color: white;
 	color: black;
-	padding: 5px;
+	padding: 5px 15px;
 	margin: 0;
 	font-size: 12pt;
 	border: none;
@@ -173,7 +174,7 @@ div.preview-title-content {
 	width: 100%;
 }
 
-.filter-button:hover {
+.type-menu-button:hover, .width-menu-button:hover, .height-menu-button:hover {
 	background-color: lightgray;
 }
 
@@ -191,17 +192,34 @@ div.preview-title-content {
 	background-color: lightgray;
 }
 
+.dropdown-container {
+	display: inline-block;
+}
+
 .dropdown {
 	display: inline-block;
 }
 
 .dropdown-content {
 	display: none;
-	width: 150px;
-	left: 81px;
 	position: absolute;
 	background-color: #f9f9f9;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+#typeDropdownContent {
+	z-index: 1;
+	left: 56px;
+}
+
+#widthDropdownContent {
+	z-index: 2;
+	left: 63px;
+}
+
+#heightDropdownContent {
+	z-index: 3;
+	left: 68px;
 }
 
 /* Post List */
@@ -413,17 +431,22 @@ a.edit-link:hover {
 		margin-right: 20px;
 	}
 	
+	#searchField {
+		width: 100%;
+	}
+	
 	.dropdown {
+		margin-top: 10px;
+	}
+	
+	#searchButton {
 		width: 100%;
 		margin-top: 10px;
+		margin-left: 0;
 	}
 	
 	.dropdown-content {
 		left: 51px;
-	}
-	
-	.filterLabel {
-		margin-left: 0;
 	}
 }
 

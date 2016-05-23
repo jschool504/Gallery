@@ -1,18 +1,44 @@
 <% include ../partials/header %>
 
 <div class="search-bar" style="z-index:1;">
-	<input type="text" id="searchField"/>
-	<button id="searchButton">Search</button>
+	
+	<input type="text" id="searchField" placeholder="Search"/>
+
 	<div class="dropdown">
-		<span class="filterLabel">Type:</span>
-		<input type="button" id="dropButton" class="dropbtn" value="Any"/>
-		<div id="dropContent" class="dropdown-content">
-			<button class="filter-button">Any</button>
+		<span id="typeLabel">Type</span>
+		<input type="button" id="typeDropButton" class="dropbtn" value="Any"/>
+		<div id="typeDropdownContent" class="dropdown-content">
+			<button class="type-menu-button">Any</button>
 			<% workTypes.forEach(function(workType) { %>
-				<button class="filter-button"><%= workType.type %></button>
+				<button class="type-menu-button"><%= workType.type %></button>
 			<% }); %>
 		</div>
 	</div>
+
+	<div class="dropdown">
+		<span id="widthLabel">Width</span>
+		<input type="button" id="widthDropdownButton" class="dropbtn" value="Any"/>
+		<div id="widthDropdownContent" class="dropdown-content">
+			<button class="width-menu-button">Any</button>
+			<% widths.forEach(function(width) { %>
+				<button class="width-menu-button"><%= width.width %>"</button>
+			<% }); %>
+		</div>
+	</div>
+
+	<div class="dropdown">
+		<span id="heightLabel">Height</span>
+		<input type="button" id="heightDropdownButton" class="dropbtn" value="Any"/>
+		<div id="heightDropdownContent" class="dropdown-content">
+			<button class="height-menu-button">Any</button>
+			<% heights.forEach(function(heights) { %>
+				<button class="height-menu-button"><%= heights.height %>"</button>
+			<% }); %>
+		</div>
+	</div>
+	
+	<button id="searchButton">Search</button>
+	
 </div>
 
 <div class="container-fluid row" style="display: flex; flex-wrap: wrap;z-index:-1;">

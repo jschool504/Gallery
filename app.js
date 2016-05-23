@@ -80,12 +80,26 @@ app.get("/", function(request, response) {
 // index
 
 app.get("/works/search", function(request, response) {
-	var filterTerm = "%";
+	var searchTerm = "%";
 	if (request.query.f != "Any") {
-		filterTerm = request.query.f;
+		searchTerm = request.query.f;
 	}
 	
-	var search_query = "SELECT * FROM Works WHERE title LIKE '%" + request.query.q + "%' " + "AND type LIKE '" + filterTerm + "'";
+	var widthTerm = "%";
+	if (request.query.w != "Any") {
+		widthTerm = request.query.w.split("\"")[0];
+	}
+	
+	var heightTerm = "%";
+	if (request.query.h != "Any") {
+		heightTerm = request.query.h.split("\"")[0];
+	}
+	
+	var search_query = "SELECT * FROM Works WHERE title LIKE '%";
+	search_query = search_query + request.query.q + "%' ";
+	search_query = search_query + "AND type LIKE '" + searchTerm + "' ";
+	search_query = search_query + "AND width LIKE '" + widthTerm + "' ";
+	search_query = search_query + "AND height LIKE '" + heightTerm + "'";
 	console.log(search_query);
 	
 	connection.query(search_query, function(error, workRows, fields) {
@@ -93,15 +107,30 @@ app.get("/works/search", function(request, response) {
 			console.log(error);
 		}
 		
-		var type_query = "SELECT DISTINCT type FROM Works";
+		var type_query = "SELECT DISTINCT type FROM Works ORDER BY type ASC";
 		console.log(type_query);
-		
 		connection.query(type_query, function(error, typeRows, fields) {
 			if (error) {
 				console.log(error);
 			}
 			
-			response.render("work/index", {works:workRows, workTypes:typeRows});
+			var width_query = "SELECT DISTINCT width FROM Works ORDER BY width DESC";
+			console.log(width_query);
+			connection.query(width_query, function(error, widthRows, fields) {
+				if (error) {
+					console.log(error);
+				}
+				
+				var height_query = "SELECT DISTINCT height FROM Works ORDER BY height DESC";
+				console.log(height_query);
+				connection.query(height_query, function(error, heightRows, fields) {
+					if (error) {
+						console.log(error);
+					}
+				
+					response.render("work/index", {works:workRows, workTypes:typeRows, widths:widthRows, heights:heightRows});
+				});
+			});
 		});
 	});
 });
@@ -118,7 +147,23 @@ app.get("/works", function(request, response) {
 				console.log(error);
 			}
 			
-			response.render("work/index", {works:workRows, workTypes:typeRows});
+			var width_query = "SELECT DISTINCT width FROM Works";
+			console.log(width_query);
+			connection.query(width_query, function(error, widthRows, fields) {
+				if (error) {
+					console.log(error);
+				}
+				
+				var height_query = "SELECT DISTINCT height FROM Works";
+				console.log(height_query);
+				connection.query(height_query, function(error, heightRows, fields) {
+					if (error) {
+						console.log(error);
+					}
+				
+					response.render("work/index", {works:workRows, workTypes:typeRows, widths:widthRows, heights:heightRows});
+				});
+			});
 		});
 	});
 });
