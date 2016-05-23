@@ -61,14 +61,21 @@ nav {
 	background-color: black;
 	opacity: 0.88;
 	margin-bottom: 0;
+	border: none;
 }
 
 .navbar-brand {
 	color: white;
 }
 
-.navbar-link {
+.navbar-nav>li>a.navbar-link {
 	color: white;
+	background-color: black;
+}
+
+.navbar-nav>li>a.navbar-link:hover {
+	background-color: white;
+	color: black;
 }
 
 .navbar-nav>li>a.add-link {
