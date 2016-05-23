@@ -262,7 +262,7 @@ app.get("/posts/:id/edit", function(request, response) {
 })
 
 app.put("/posts/:id", function(request, response) {
-	console.log(request);
+	console.log(request.body.content);
 	connection.query("UPDATE Posts SET title='" + request.body.title + "',date='" + request.body.date + "',content='" + request.body.content + "' WHERE id=" + request.params.id, function(error, rows, fields) {
 		if (error) {
 			response.redirect("/posts/" + rows[0].id + "/edit", {post:rows[0]});

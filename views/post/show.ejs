@@ -3,7 +3,8 @@
 <div class="post-panel">
 	<h1><%= post.title %></h1>
 	<p><%= post.date %></p>
-	<div class="post-css" id="postContent"><%= post.content %></div>
+	<div style="visibility: hidden; display: none;" id="postContentData"><%= post.content %></div>
+	<div id="postContent"><%= post.content %></div>
 	<% if (currentUser && currentUser.name == "admin") {%>
 		<div id="post-admin-paragraph">
 			<form class="delete-form" action="<%= post.id %>?_method=DELETE" method="post">
