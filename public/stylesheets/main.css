@@ -166,13 +166,17 @@ div.preview-title-content {
 
 /* Dropdown */
 
-#typeLabel, #widthLabel, #heightLabel {
+.filterLabel {
+	float: left;
 	font-size: 12pt;
-	margin-left: 10px;
-	margin-right: 8px;
+	width: 60px;
+	margin-left: auto;
+	margin-right: 10px;
+	margin-top: 5px;
+	text-align: right;
 }
 
-.type-menu-button, .width-menu-button, .height-menu-button {
+.type-menu-button, .width-menu-button, .height-menu-button, .genre-menu-button {
 	transition: 0.3s background-color;
 	background-color: white;
 	color: black;
@@ -185,7 +189,7 @@ div.preview-title-content {
 	width: 100%;
 }
 
-.type-menu-button:hover, .width-menu-button:hover, .height-menu-button:hover {
+.type-menu-button:hover, .width-menu-button:hover, .height-menu-button:hover, .genre-menu-button:hover {
 	transition: 0.3s background-color;
 	background-color: lightgray;
 }
@@ -219,21 +223,23 @@ div.preview-title-content {
 	position: absolute;
 	background-color: #f9f9f9;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	left: 70px;
 }
 
 #typeDropdownContent {
 	z-index: 1;
-	left: 56px;
+}
+
+#genreDropdownContent {
+	z-index: 2;
 }
 
 #widthDropdownContent {
-	z-index: 2;
-	left: 63px;
+	z-index: 3;
 }
 
 #heightDropdownContent {
-	z-index: 3;
-	left: 68px;
+	z-index: 4;
 }
 
 /* Post List */

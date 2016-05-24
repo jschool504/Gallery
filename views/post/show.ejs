@@ -5,7 +5,7 @@
 	<p><%= post.date %></p>
 	<div style="visibility: hidden; display: none;" id="postContentData"><%= post.content %></div>
 	<div id="postContent"><%= post.content %></div>
-	<% if (currentUser && currentUser.name == "admin") {%>
+	<% if (currentUser) {%>
 		<div id="post-admin-paragraph">
 			<form class="delete-form" action="<%= post.id %>?_method=DELETE" method="post">
 				<a class="edit-link" href="<%= post.id %>/edit">Edit</a>

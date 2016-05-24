@@ -11,6 +11,12 @@ $(document).ready(function() {
 		$("#typeDropButton").val(typeParam);
 	}
 	
+	var genreParam = location.href.split("&g=")[1];
+	if (genreParam != null) {
+		genreParam = genreParam.split("&")[0].split("%20").join(" ");
+		$("#genreDropdownButton").val(genreParam);
+	}
+	
 	var widthParam = location.href.split("&w=")[1];
 	if (widthParam != null) {
 		widthParam = widthParam.split("&")[0].split("%22")[0];
@@ -28,12 +34,6 @@ $(document).ready(function() {
 		}
 		$("#heightDropdownButton").val(heightParam);
 	}
-	
-	/*
-	$("#edit-panel").keyup(function(e) {
-		$("#postContent")[0].innerHTML = $("#editContent").val();
-	});
-	*/
 	
 	var postContent = document.getElementById("postContent");
 	if (postContent != null) {
@@ -105,14 +105,18 @@ $(document).ready(function() {
 		});
 	});
 	
+	var search = function() {
+		location.href = "/works/search?q=" + $("#searchField").val() + "&f=" + $("#typeDropButton").val() + "&g=" + $("#genreDropdownButton").val() + "&w=" + $("#widthDropdownButton").val() + "&h=" + $("#heightDropdownButton").val();
+	}
+	
 	//Event Handlers
 	$("#searchButton").click(function() {
-		location.href = "/works/search?q=" + $("#searchField").val() + "&f=" + $("#typeDropButton").val() + "&w=" + $("#widthDropdownButton").val() + "&h=" + $("#heightDropdownButton").val();
+		search();
 	});
 	
 	$("#searchField").keyup(function(e) {
 		if (e.keyCode == 13) {
-			location.href = "/works/search?q=" + $("#searchField").val() + "&f=" + $("#typeDropButton").val() + "&w=" + $("#widthDropdownButton").val() + "&h=" + $("#heightDropdownButton").val();
+			search();
 		}
 	});
 	
@@ -136,7 +140,24 @@ $(document).ready(function() {
 	$(".type-menu-button").click(function(e) {
 		$("#typeDropButton").val(e.currentTarget.textContent);
 		$("#typeDropdownContent").toggle();
-		location.href = "/works/search?q=" + $("#searchField").val() + "&f=" + $("#typeDropButton").val() + "&w=" + $("#widthDropdownButton").val() + "&h=" + $("#heightDropdownButton").val();
+		search();
+	});
+	
+	//Genre dropdown
+	
+	$(document).click(function() {
+		$("#genreDropdownContent").hide();
+	});
+	
+	$("#genreDropdownButton").click(function(e) {
+		e.stopPropagation();
+		$("#genreDropdownContent").show();
+	});
+	
+	$(".genre-menu-button").click(function(e) {
+		$("#genreDropdownButton").val(e.currentTarget.textContent);
+		$("#genreDropdownContent").toggle();
+		search();
 	});
 	
 	//Width dropdown
@@ -153,7 +174,7 @@ $(document).ready(function() {
 	$(".width-menu-button").click(function(e) {
 		$("#widthDropdownButton").val(e.currentTarget.textContent);
 		$("#widthDropdownContent").toggle();
-		location.href = "/works/search?q=" + $("#searchField").val() + "&f=" + $("#typeDropButton").val() + "&w=" + $("#widthDropdownButton").val() + "&h=" + $("#heightDropdownButton").val();
+		search();
 	});
 	
 	//Height dropdown
@@ -170,6 +191,6 @@ $(document).ready(function() {
 	$(".height-menu-button").click(function(e) {
 		$("#heightDropdownButton").val(e.currentTarget.textContent);
 		$("#heightDropdownContent").toggle();
-		location.href = "/works/search?q=" + $("#searchField").val() + "&f=" + $("#typeDropButton").val() + "&w=" + $("#widthDropdownButton").val() + "&h=" + $("#heightDropdownButton").val();
+		search();
 	});
 });
