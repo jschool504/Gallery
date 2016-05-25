@@ -36,6 +36,12 @@
 	margin: 0;
 }
 
+.col-sm-3 {
+	padding-bottom: 26px;
+	padding-left: 13px;
+	padding-right: 13px;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -141,6 +147,7 @@ nav {
 	border: 2px solid black;
 	box-shadow: 5px 5px 10px #595959;
 	backface-visibility: hidden;
+	margin-bottom: 0;
 }
 
 .thumbnail:hover {
@@ -169,14 +176,15 @@ div.preview-title-content {
 .filterLabel {
 	float: left;
 	font-size: 12pt;
-	width: 60px;
-	margin-left: auto;
+	width: 65px;
+	margin-left: 5px;
 	margin-right: 10px;
 	margin-top: 5px;
 	text-align: right;
 }
 
-.type-menu-button, .width-menu-button, .height-menu-button, .genre-menu-button {
+.type-menu-button, .width-menu-button, .height-menu-button, .genre-menu-button,
+.sold-menu-button {
 	transition: 0.3s background-color;
 	background-color: white;
 	color: black;
@@ -189,20 +197,24 @@ div.preview-title-content {
 	width: 100%;
 }
 
-.type-menu-button:hover, .width-menu-button:hover, .height-menu-button:hover, .genre-menu-button:hover {
+.type-menu-button:hover, .width-menu-button:hover, .height-menu-button:hover,
+.genre-menu-button:hover, .sold-menu-button:hover {
 	transition: 0.3s background-color;
 	background-color: lightgray;
+	text-align: center;
 }
 
 .dropbtn {
 	transition: 0.3s background-color;
 	background-color: white;
 	color: black;
-	padding: 5px 10px;
+	padding: 5px 15px;
 	font-size: 12pt;
 	border: none;
 	cursor: pointer;
 	outline: 0;
+	margin-left: 10px;
+	text-align: center;
 }
 
 .dropbtn:hover {
@@ -224,22 +236,66 @@ div.preview-title-content {
 	background-color: #f9f9f9;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	left: 70px;
+	margin-left: 20px;
 }
 
 #typeDropdownContent {
 	z-index: 1;
+	width: 100px;
+}
+
+#typeDropButton {
+	width: 100px;
 }
 
 #genreDropdownContent {
 	z-index: 2;
+	width: 100px;
+}
+
+#genreDropdownButton {
+	width: 100px;
 }
 
 #widthDropdownContent {
 	z-index: 3;
+	width: 60px;
+}
+
+#widthDropdownButton {
+	width: 60px;
 }
 
 #heightDropdownContent {
 	z-index: 4;
+	width: 60px;
+}
+
+#heightDropdownButton {
+	width: 60px;
+}
+
+#soldDropdownContent {
+	z-index: 5;
+	width: 70px;
+}
+
+#soldDropdownButton {
+	width: 70px;
+}
+
+input[type=checkbox] {
+	width: 20px;
+	height: 20px;
+	float: left;
+	margin-top: 0;
+	margin-bottom: 15px;
+	margin-right: 10px;
+}
+
+#soldLabel {
+	color: white;
+	float: left;
 }
 
 /* Post List */
@@ -514,25 +570,6 @@ a.edit-link:hover {
 		margin-left: 20px;
 		margin-right: 20px;
 	}
-	
-	#searchField {
-		width: 100%;
-	}
-	
-	.dropdown {
-		margin-top: 10px;
-	}
-	
-	#searchButton {
-		width: 100%;
-		margin-top: 10px;
-		margin-left: 0;
-		float: none;
-	}
-	
-	.dropdown-content {
-		left: 51px;
-	}
 }
 
 @media (max-width: 480px) {
@@ -551,6 +588,27 @@ a.edit-link:hover {
 		margin-left: -20px;
 		margin-right: -20px;
 		max-width: none;
+	}
+}
+
+@media (max-width: 1000px) {
+	#searchButton {
+		width: 100%;
+		margin-top: 10px;
+		margin-left: 0;
+		float: none;
+	}
+	
+	#searchField {
+		width: 100%;
+	}
+	
+	.dropdown {
+		margin-top: 10px;
+	}
+	
+	.dropdown-content {
+		left: 51px;
 	}
 }
 

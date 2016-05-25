@@ -28,11 +28,16 @@ $(document).ready(function() {
 	
 	var heightParam = location.href.split("&h=")[1];
 	if (heightParam != null) {
-		heightParam = heightParam.split("%22")[0];
+		heightParam = heightParam.split("&")[0].split("%22")[0];
 		if (heightParam != "Any") {
 			heightParam = heightParam.split("&") + "\"";
 		}
 		$("#heightDropdownButton").val(heightParam);
+	}
+	
+	var soldParam = location.href.split("&s=")[1];
+	if (soldParam != null) {
+		$("#soldDropdownButton").val(soldParam);
 	}
 	
 	var postContent = document.getElementById("postContent");
@@ -106,8 +111,13 @@ $(document).ready(function() {
 	});
 	
 	var search = function() {
-		location.href = "/works/search?q=" + $("#searchField").val() + "&f=" + $("#typeDropButton").val() + "&g=" + $("#genreDropdownButton").val() + "&w=" + $("#widthDropdownButton").val() + "&h=" + $("#heightDropdownButton").val();
-	}
+		location.href = "/works/search?q=" + $("#searchField").val() +
+		"&f=" + $("#typeDropButton").val() +
+		"&g=" + $("#genreDropdownButton").val() +
+		"&w=" + $("#widthDropdownButton").val() +
+		"&h=" + $("#heightDropdownButton").val() +
+		"&s=" + $("#soldDropdownButton").val()
+	};
 	
 	//Event Handlers
 	$("#searchButton").click(function() {
@@ -191,6 +201,23 @@ $(document).ready(function() {
 	$(".height-menu-button").click(function(e) {
 		$("#heightDropdownButton").val(e.currentTarget.textContent);
 		$("#heightDropdownContent").toggle();
+		search();
+	});
+	
+	//Sold dropdown
+	
+	$(document).click(function() {
+		$("#soldDropdownContent").hide();
+	});
+	
+	$("#soldDropdownButton").click(function(e) {
+		e.stopPropagation();
+		$("#soldDropdownContent").show();
+	});
+	
+	$(".sold-menu-button").click(function(e) {
+		$("#soldDropdownButton").val(e.currentTarget.textContent);
+		$("#soldDropdownContent").toggle();
 		search();
 	});
 });

@@ -30,12 +30,23 @@ router.get("/works/search", function(request, response) {
 		genreTerm = request.query.g;
 	}
 	
+	var tmpSoldQuery = "";
+	if (request.query.s != "Either") {
+		tmpSoldQuery = "AND sold LIKE ";
+		if (request.query.s == "Yes") {
+			tmpSoldQuery += "1";
+		} else if (request.query.s == "No") {
+			tmpSoldQuery += "0";
+		}
+	}
+	
 	var search_query = "SELECT * FROM Works WHERE title LIKE '%";
 	search_query = search_query + request.query.q + "%' ";
 	search_query = search_query + "AND type LIKE '" + searchTerm + "' ";
 	search_query = search_query + "AND width LIKE '" + widthTerm + "' ";
-	search_query = search_query + "AND height LIKE '" + heightTerm + "'";
-	search_query = search_query + "AND genre LIKE '" + genreTerm + "'";
+	search_query = search_query + "AND height LIKE '" + heightTerm + "' ";
+	search_query = search_query + "AND genre LIKE '" + genreTerm + "' ";
+	search_query = search_query + tmpSoldQuery;
 	console.log(search_query);
 	
 	connection.query(search_query, function(error, workRows, fields) {
@@ -71,7 +82,17 @@ router.get("/works/search", function(request, response) {
 							console.log(error);
 						}
 				
-						response.render("work/index", {works:workRows, workTypes:typeRows, widths:widthRows, heights:heightRows, genres:genreRows});
+						var sold_query = "SELECT DISTINCT sold FROM Works";
+						console.log(sold_query);
+						connection.query(sold_query, function(error, soldRows, fields) {
+							if (error) {
+								console.log(error);
+							}
+							
+							console.log(workRows);
+				
+							response.render("work/index", {works:workRows, workTypes:typeRows, widths:widthRows, heights:heightRows, genres:genreRows, soldStatuses:soldRows});
+						});
 					});
 				});
 			});
@@ -111,8 +132,16 @@ router.get("/works", function(request, response) {
 						if (error) {
 							console.log(error);
 						}
+						
+						var sold_query = "SELECT DISTINCT sold FROM Works";
+						console.log(sold_query);
+						connection.query(sold_query, function(error, soldRows, fields) {
+							if (error) {
+								console.log(error);
+							}
 				
-						response.render("work/index", {works:workRows, workTypes:typeRows, widths:widthRows, heights:heightRows, genres:genreRows});
+							response.render("work/index", {works:workRows, workTypes:typeRows, widths:widthRows, heights:heightRows, genres:genreRows, soldStatuses:soldRows});
+						});
 					});
 				});
 			});
@@ -127,8 +156,22 @@ router.get("/works/new", middleware.isLoggedIn, function(request, response) {
 });
 
 router.post("/works", middleware.isLoggedIn, function(request, response) {
-	var new_query = "INSERT INTO Works (title, image, width, height, type, info, genre) VALUES (";
-	var data = "'" + request.body.title + "','" + request.body.image_url + "'," + request.body.width + "," + request.body.height + ",'" + request.body.type + "','" + request.body.info + "','" + request.body.genre + "'";
+	
+	var forSale = 0;
+	if (request.body.sold == "on") {
+		forSale = 1;
+	}
+	
+	var new_query = "INSERT INTO Works (title, image, width, height, type, info, genre, sold) VALUES (";
+	var data = "'" + request.body.title + "','" +
+	request.body.image_url + "'," +
+	request.body.width + "," +
+	request.body.height + ",'" +
+	request.body.type + "','" +
+	request.body.info + "','" +
+	request.body.genre + "'," +
+	forSale;
+	
 	new_query = new_query + data + ")";
 	console.log(new_query);
 	connection.query(new_query, function(error, rows, fields) {
@@ -161,8 +204,23 @@ router.get("/works/:id/edit", middleware.isLoggedIn, function(request, response)
 })
 
 router.put("/works/:id", middleware.isLoggedIn, function(request, response) {
-	var update_query = "UPDATE Works SET title='" + request.body.title + "', image='" + request.body.image_url + "', type='" + request.body.type + "', info='" + request.body.info + "', genre='" + request.body.genre + "' WHERE id='" + request.params.id + "'";
+	
+	var forSale = 0;
+	if (request.body.sold == "on") {
+		forSale = 1;
+	}
+	
+	var update_query = "UPDATE Works SET " +
+	"title='" + request.body.title +
+	"', image='" + request.body.image_url +
+	"', type='" + request.body.type +
+	"', info='" + request.body.info +
+	"', genre='" + request.body.genre +
+	"', sold=" + forSale +
+	" WHERE id='" + request.params.id + "'";
+	
 	console.log(update_query);
+	
 	connection.query(update_query, function(error, rows) {
 		if (error) {
 			console.log(error);

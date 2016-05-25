@@ -10,7 +10,7 @@
 		<div id="typeDropdownContent" class="dropdown-content">
 			<button class="type-menu-button">Any</button>
 			<% workTypes.forEach(function(workType) { %>
-				<button class="type-menu-button"><%= workType.type %></button>
+			<button class="type-menu-button"><%= workType.type %></button>
 			<% }); %>
 		</div>
 	</div>
@@ -21,7 +21,7 @@
 		<div id="genreDropdownContent" class="dropdown-content">
 			<button class="genre-menu-button">Any</button>
 			<% genres.forEach(function(genre) { %>
-				<button class="genre-menu-button"><%= genre.genre %></button>
+			<button class="genre-menu-button"><%= genre.genre %></button>
 			<% }); %>
 		</div>
 	</div>
@@ -32,7 +32,7 @@
 		<div id="widthDropdownContent" class="dropdown-content">
 			<button class="width-menu-button">Any</button>
 			<% widths.forEach(function(width) { %>
-				<button class="width-menu-button"><%= width.width %>"</button>
+			<button class="width-menu-button"><%= width.width %>"</button>
 			<% }); %>
 		</div>
 	</div>
@@ -43,8 +43,18 @@
 		<div id="heightDropdownContent" class="dropdown-content">
 			<button class="height-menu-button">Any</button>
 			<% heights.forEach(function(height) { %>
-				<button class="height-menu-button"><%= height.height %>"</button>
+			<button class="height-menu-button"><%= height.height %>"</button>
 			<% }); %>
+		</div>
+	</div>
+	
+	<div class="dropdown">
+		<span id="soldLabel" class="filterLabel">For Sale</span>
+		<input type="button" id="soldDropdownButton" class="dropbtn" value="Either"/>
+		<div id="soldDropdownContent" class="dropdown-content">
+			<button class="sold-menu-button">Either</button>
+			<button class="sold-menu-button">Yes</button>
+			<button class="sold-menu-button">No</button>
 		</div>
 	</div>
 	
