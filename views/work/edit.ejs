@@ -1,5 +1,7 @@
 <% include ../partials/header %>
 
+<link rel="stylesheet" href="/stylesheets/work_edit.css"/>
+
 <div class="black-panel row">
 	<h1>Edit "<%= work.title %>"</h1>
 	<form class="edit-form" action="/works/<%= work.id %>?_method=PUT" method="post">
@@ -16,9 +18,11 @@
 		<div class="form-group">
 			<input class="form-control" type="text" name="genre" placeholder="Genre" value="<%= work.genre %>">
 		</div>
-		<div class="form-group">
-			<input class="form-control" type="checkbox" name="sold" <% if (work.sold == 1) { %>checked<% } %>>
-			<span id="soldLabel">For Sale?</span>
+		<div class="form-group" style="display: inline-block;width: 100%;">
+			<label id="soldLabel">
+				<input class="form-control" type="checkbox" name="sold" <% if (work.sold == 1) { %>checked<% } %>>
+				For Sale?
+				</label>
 		</div>
 		<div class="form-group">
 			<input class="form-control" type="url" name="image_url" placeholder="Image URL" value="<%= work.image %>">

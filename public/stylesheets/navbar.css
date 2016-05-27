@@ -1,0 +1,44 @@
+/* Navbar */
+
+nav {
+	border: none;
+}
+
+.navbar {
+	background-color: black;
+	opacity: 0.88;
+	margin-bottom: 0;
+	border: none;
+}
+
+.navbar-brand {
+	color: white;
+}
+
+.navbar-nav>li>a.navbar-link {
+	transition: 0.3s background-color;
+	padding: 15px 15px;
+	margin: 0;
+	color: white;
+	background-color: black;
+}
+
+.navbar-nav>li>a.navbar-link:hover {
+	transition: 0.3s background-color;
+	background-color: white;
+	color: black;
+}
+
+.navbar-nav>li>a.add-link {
+	transition: 0.3s background-color;
+	color: black;
+	background-color: white;
+	margin: 10px 0px;
+	padding: 5px 10px;
+}
+
+.navbar-nav>li>a.add-link:hover {
+	transition: 0.3s background-color;
+	background-color: #ccc;
+	color: black;
+}

@@ -1,0 +1,10 @@
+input[name=sold] {
+	width: auto;
+	float: left;
+	margin-right: 10px;
+}
+
+#soldLabel {
+	color: white;
+	float: left;
+}
