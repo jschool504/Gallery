@@ -11,7 +11,7 @@
 	<div class="dropdown">
 		<span id="typeLabel" class="filterLabel">Type</span>
 		<input type="button" id="typeDropButton" class="dropbtn" value="Any"/>
-		<div id="typeDropdownContent" class="dropdown-content">
+		<div id="typeDropdownContent" class="dropdown-content lg-dropdown">
 			<button class="type-menu-button">Any</button>
 			<% workTypes.forEach(function(workType) { %>
 			<button class="type-menu-button"><%= workType.type %></button>
@@ -22,7 +22,7 @@
 	<div class="dropdown">
 		<span id="genreLabel" class="filterLabel">Genre</span>
 		<input type="button" id="genreDropdownButton" class="dropbtn" value="Any"/>
-		<div id="genreDropdownContent" class="dropdown-content">
+		<div id="genreDropdownContent" class="dropdown-content lg-dropdown">
 			<button class="genre-menu-button">Any</button>
 			<% genres.forEach(function(genre) { %>
 			<button class="genre-menu-button"><%= genre.genre %></button>
@@ -33,7 +33,7 @@
 	<div class="dropdown">
 		<span id="widthLabel" class="filterLabel">Width</span>
 		<input type="button" id="widthDropdownButton" class="dropbtn" value="Any"/>
-		<div id="widthDropdownContent" class="dropdown-content">
+		<div id="widthDropdownContent" class="dropdown-content sm-dropdown">
 			<button class="width-menu-button">Any</button>
 			<% widths.forEach(function(width) { %>
 			<button class="width-menu-button"><%= width.width %>"</button>
@@ -44,7 +44,7 @@
 	<div class="dropdown">
 		<span id="heightLabel" class="filterLabel">Height</span>
 		<input type="button" id="heightDropdownButton" class="dropbtn" value="Any"/>
-		<div id="heightDropdownContent" class="dropdown-content">
+		<div id="heightDropdownContent" class="dropdown-content sm-dropdown">
 			<button class="height-menu-button">Any</button>
 			<% heights.forEach(function(height) { %>
 			<button class="height-menu-button"><%= height.height %>"</button>
@@ -55,7 +55,7 @@
 	<div class="dropdown">
 		<span id="soldLabel" class="filterLabel">For Sale</span>
 		<input type="button" id="soldDropdownButton" class="dropbtn" value="Either"/>
-		<div id="soldDropdownContent" class="dropdown-content">
+		<div id="soldDropdownContent" class="dropdown-content  sm-dropdown">
 			<button class="sold-menu-button">Either</button>
 			<button class="sold-menu-button">Yes</button>
 			<button class="sold-menu-button">No</button>

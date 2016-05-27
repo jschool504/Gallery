@@ -44,13 +44,3 @@ div.preview-title-content {
 		width: 300px;
 	}
 }
-
-@media (max-width: 1000px) {
-	.dropdown {
-		margin-top: 10px;
-	}
-	
-	.dropdown-content {
-		left: 51px;
-	}
-}
