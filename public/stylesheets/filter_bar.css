@@ -134,16 +134,16 @@
 	z-index: 5;
 }
 
-@media (max-width: 1000px) {
-	.dropdown {
-		margin-top: 10px;
-	}
-	
+@media (max-width: 1200px) {
 	#searchButton {
 		width: 100%;
 		margin-top: 10px;
 		margin-left: 0;
 		float: none;
+	}
+	
+	.dropdown {
+		margin-top: 10px;
 	}
 	
 	#searchField {
