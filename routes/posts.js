@@ -10,7 +10,7 @@ var connection = db.getConnection();
 // index
 
 router.get("/posts", function(request, response) {
-	connection.query("SELECT * FROM Posts", function(error, rows, fields) {
+	connection.query("SELECT * FROM Posts ORDER BY date DESC", function(error, rows, fields) {
 		response.render("post/index", {posts:rows});
 	})
 })
@@ -22,7 +22,7 @@ router.get("/posts/new", middleware.isLoggedIn, function(request, response) {
 });
 
 router.post("/posts", middleware.isLoggedIn, function(request, response) {
-	connection.query("INSERT INTO Posts (title, date, content) VALUES ('" + request.body.title + "','" + request.body.date + "','" + request.body.content + "')", function(error, rows, fields) {
+	connection.query("INSERT INTO Posts (title, date, content, category) VALUES ('" + request.body.title + "','" + request.body.date + "','" + request.body.content + "','" + request.body.category + "')", function(error, rows, fields) {
 		response.redirect("/posts");
 	});
 });
@@ -36,8 +36,11 @@ router.get("/posts/:id/edit", middleware.isLoggedIn, function(request, response)
 })
 
 router.put("/posts/:id", middleware.isLoggedIn, function(request, response) {
-	console.log(request.body.content);
-	connection.query("UPDATE Posts SET title='" + request.body.title + "',date='" + request.body.date + "',content='" + request.body.content + "' WHERE id=" + request.params.id, function(error, rows, fields) {
+	connection.query("UPDATE Posts SET title='" + request.body.title +
+	"',date='" + request.body.date +
+	"',content='" + request.body.content +
+	"',category='" + request.body.category +
+	"' WHERE id=" + request.params.id, function(error, rows, fields) {
 		if (error) {
 			response.redirect("/posts/" + rows[0].id + "/edit", {post:rows[0]});
 			console.log(error);

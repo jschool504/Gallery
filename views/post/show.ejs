@@ -2,7 +2,7 @@
 
 <div class="post-panel">
 	<h1><%= post.title %></h1>
-	<p><%= post.date %></p>
+	<p><%= post.date %> | <%= post.category %></p>
 	<div style="visibility: hidden; display: none;" id="postContentData"><%= post.content %></div>
 	<div id="postContent"><%= post.content %></div>
 	<% if (currentUser) {%>

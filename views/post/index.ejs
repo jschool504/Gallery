@@ -4,7 +4,7 @@
 	<% posts.forEach(function(post) { %>
 		<div class="col-lg-1">
 			<div class="preview-post-panel">
-				<a href="posts/<%= post.id %>"><%= post.title %><p><%= post.date %></p></a>
+				<a href="posts/<%= post.id %>"><%= post.title %><p><%= post.date %> | <%= post.category %></p></a>
 			</div>
 		</div>
 	<% }); %>

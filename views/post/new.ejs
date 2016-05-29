@@ -1,21 +1,42 @@
 <% include ../partials/header %>
 
-<div class="black-panel" class="row">
-	<h1>New Post</h1>
-	<form class="edit-form" action="/posts" method="post">
-		<div class="form-group">
-			<input class="form-control" type="text" name="title" placeholder="Title">
-		</div>
-		<div class="form-group">
-			<input class="form-control" type="date" name="date" placeholder="Date">
-		</div>
-		<div class="form-group">
-			<div class="form-control" contentEditable="true" name="content" placeholder="Content"></div>
-		</div>
-		<div class="form-group">
-			<button class="form-control" class="btn btn-primary">Submit!</button>
-		</div>
-	</form>
+<script src="/js/post_edit.js"></script>
+
+<div id="edit-container">
+	
+	<div class="black-panel" class="row">
+		<h1>New Post</h1>
+		<form class="" action="/posts" method="post">
+			<div class="form-group">
+				<input class="form-control" type="text" name="title" placeholder="Title">
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="date" name="date" placeholder="Date">
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" name="category" placeholder="Category">
+			</div>
+			<div class="form-group">
+				<button type="button" class="post-edit-button" id="boldButton">B</button>
+				<button type="button" class="post-edit-button" id="italicButton">I</button>
+				<button type="button" class="post-edit-button" id="underlineButton">U</button>
+				<button type="button" class="post-edit-button" id="fontButton">F</button>
+				<button type="button" class="post-edit-button" id="imgButton">Image</button>
+				<button type="button" class="post-edit-button" id="linkButton">Link</button>
+				<button type="button" class="post-edit-button" id="leftAlignButton">L</button>
+				<button type="button" class="post-edit-button" id="centerAlignButton">M</button>
+				<button type="button" class="post-edit-button" id="rightAlignButton">R</button>
+			</div>
+			<div class="form-group">
+				<textarea style="visibility: hidden; display: none;" name="content" id="postContentArea"></textarea>
+				<div id="postContentEditor" contentEditable="true"></div>
+			</div>
+			<div class="form-group">
+				<button class="form-control" class="btn btn-primary">Submit!</button>
+			</div>
+		</form>
+	</div>
+
 </div>
 
 <% include ../partials/footer %>
