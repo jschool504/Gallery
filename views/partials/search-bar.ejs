@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/stylesheets/filter_bar.css"/>
+
+<nav id="filterBar" class="navbar navbar-inverse" style="z-index:1;">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<input type="text" id="searchField" placeholder="Search"/>
+			<button id="searchButton">Search</button>
+			<button id="filterMenuButton" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#filterMenu">Filters</button>
+		</div>
+		
+		<div id="filterMenu" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					<p id="filterMenuLabel">Filter:</p>
+				</li>
+				<li class="dropdown">
+					<input type="button" id="typeDropButton" class="dropbtn" value="Type"/>
+					<div id="typeDropdownContent" class="dropdown-content lg-dropdown">
+						<button class="type-menu-button">Type</button>
+						<% workTypes.forEach(function(workType) { %>
+						<button class="type-menu-button"><%= workType.type %></button>
+						<% }); %>
+					</div>
+				</li>
+				<li class="dropdown">
+					<input type="button" id="genreDropdownButton" class="dropbtn" value="Genre"/>
+					<div id="genreDropdownContent" class="dropdown-content lg-dropdown">
+						<button class="genre-menu-button">Genre</button>
+						<% genres.forEach(function(genre) { %>
+						<button class="genre-menu-button"><%= genre.genre %></button>
+						<% }); %>
+					</div>
+				</li>
+				<li class="dropdown">
+					<input type="button" id="widthDropdownButton" class="dropbtn" value="Width"/>
+					<div id="widthDropdownContent" class="dropdown-content md-dropdown">
+						<button class="width-menu-button">Width</button>
+						<% widths.forEach(function(width) { %>
+						<button class="width-menu-button"><%= width.width %>"</button>
+						<% }); %>
+					</div>
+				</li>
+				<li class="dropdown">
+					<input type="button" id="heightDropdownButton" class="dropbtn" value="Height"/>
+					<div id="heightDropdownContent" class="dropdown-content md-dropdown">
+						<button class="height-menu-button">Height</button>
+						<% heights.forEach(function(height) { %>
+						<button class="height-menu-button"><%= height.height %>"</button>
+						<% }); %>
+					</div>
+				</li>
+				<li class="dropdown">
+					<input type="button" id="soldDropdownButton" class="dropbtn" value="All"/>
+					<div id="soldDropdownContent" class="dropdown-content lg-dropdown">
+						<button class="sold-menu-button">All</button>
+						<button class="sold-menu-button">Available</button>
+						<button class="sold-menu-button">Unavailable</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

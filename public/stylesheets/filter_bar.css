@@ -13,7 +13,6 @@
     padding: 5px 4px;
     vertical-align: top;
     background-color: white;
-    margin-right: 8px;
     color: black;
     outline: 0;
 }
@@ -21,17 +20,45 @@
 #searchButton {
 	transition: 0.3s background-color;
     background-color: white;
-    margin-left: 15px;
+    margin-left: 5px;
     border: none;
     color: black;
     font-size: 12pt;
     padding: 5px 10px;
-    float: right;
 }
 
-#searchButton:hover {
+#searchButton:hover, #filterMenuButton:hover {
 	transition: 0.3s background-color;
 	background-color: lightgray;
+}
+
+#filterMenuButton {
+	transition: 0.3s background-color;
+    background-color: white;
+    margin: 0;
+    border: none;
+    color: black;
+    font-size: 12pt;
+    padding: 5px 10px;
+}
+
+#filterMenuLabel {
+	margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+#filterMenu {
+	margin: 0;
+	border: none;
+	box-shadow: none;
+	overflow-y: visible;
+}
+
+#filterBar {
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 /* Dropdown */
@@ -39,9 +66,8 @@
 .filterLabel {
 	float: left;
 	font-size: 12pt;
-	width: 65px;
-	margin-left: 5px;
-	margin-right: 10px;
+	/*width: 65px;*/
+	margin-left: 10px;
 	margin-top: 5px;
 	text-align: right;
 }
@@ -56,7 +82,6 @@
 	font-size: 12pt;
 	border: none;
 	cursor: pointer;
-	display: block;
 	width: 100%;
 }
 
@@ -85,68 +110,67 @@
 	background-color: lightgray;
 }
 
-.dropdown-container {
-	display: inline-block;
-}
-
-.dropdown {
-	display: inline-block;
-}
-
 .dropdown-content {
 	display: none;
 	position: absolute;
 	background-color: #f9f9f9;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-	margin-left: 20px;
-	left: 70px;
-	width: 100%;
+	margin-left: 10px;
 }
 
 .lg-dropdown {
-	width: 150px;
+	width: 120px;
 }
 
 .md-dropdown {
-	width: 100px;
+	width: 90px;
 }
 
 .sm-dropdown {
-	width: 80px;
+	width: 60px;
 }
 
 #typeDropdownContent {
-	z-index: 1;
+	z-index: 2;
 }
 
 #genreDropdownContent {
-	z-index: 2;
-}
-#widthDropdownContent {
 	z-index: 3;
 }
 
-#heightDropdownContent {
+#widthDropdownContent {
 	z-index: 4;
 }
 
-#soldDropdownContent {
+#heightDropdownContent {
 	z-index: 5;
 }
 
-@media (max-width: 1200px) {
-	#searchButton {
+#soldDropdownContent {
+	z-index: 6;
+}
+
+@media (max-width: 768px) {
+	#filterBar {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	
+	.dropbtn {
 		width: 100%;
+		margin:0;
 		margin-top: 10px;
+	}
+	
+	.dropdown-content {
+		position: relative;
+		margin-top: 5px;
 		margin-left: 0;
-		float: none;
-	}
-	
-	.dropdown {
-		margin-top: 10px;
-	}
-	
-	#searchField {
 		width: 100%;
+		background-color: #d8d8d8;
+	}
+	
+	#filterMenuLabel {
+		display: none;
 	}
 }

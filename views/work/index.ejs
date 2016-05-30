@@ -1,70 +1,9 @@
 <% include ../partials/header %>
 
 <script src="/js/work_index.js"></script>
-<link rel="stylesheet" href="/stylesheets/filter_bar.css"/>
 <link rel="stylesheet" href="/stylesheets/work_index.css"/>
 
-<div class="search-bar" style="z-index:1;">
-	
-	<input type="text" id="searchField" placeholder="Search"/>
-
-	<div class="dropdown">
-		<span id="typeLabel" class="filterLabel">Type</span>
-		<input type="button" id="typeDropButton" class="dropbtn" value="Any"/>
-		<div id="typeDropdownContent" class="dropdown-content lg-dropdown">
-			<button class="type-menu-button">Any</button>
-			<% workTypes.forEach(function(workType) { %>
-			<button class="type-menu-button"><%= workType.type %></button>
-			<% }); %>
-		</div>
-	</div>
-	
-	<div class="dropdown">
-		<span id="genreLabel" class="filterLabel">Genre</span>
-		<input type="button" id="genreDropdownButton" class="dropbtn" value="Any"/>
-		<div id="genreDropdownContent" class="dropdown-content lg-dropdown">
-			<button class="genre-menu-button">Any</button>
-			<% genres.forEach(function(genre) { %>
-			<button class="genre-menu-button"><%= genre.genre %></button>
-			<% }); %>
-		</div>
-	</div>
-
-	<div class="dropdown">
-		<span id="widthLabel" class="filterLabel">Width</span>
-		<input type="button" id="widthDropdownButton" class="dropbtn" value="Any"/>
-		<div id="widthDropdownContent" class="dropdown-content sm-dropdown">
-			<button class="width-menu-button">Any</button>
-			<% widths.forEach(function(width) { %>
-			<button class="width-menu-button"><%= width.width %>"</button>
-			<% }); %>
-		</div>
-	</div>
-
-	<div class="dropdown">
-		<span id="heightLabel" class="filterLabel">Height</span>
-		<input type="button" id="heightDropdownButton" class="dropbtn" value="Any"/>
-		<div id="heightDropdownContent" class="dropdown-content sm-dropdown">
-			<button class="height-menu-button">Any</button>
-			<% heights.forEach(function(height) { %>
-			<button class="height-menu-button"><%= height.height %>"</button>
-			<% }); %>
-		</div>
-	</div>
-	
-	<div class="dropdown">
-		<span id="soldLabel" class="filterLabel">For Sale</span>
-		<input type="button" id="soldDropdownButton" class="dropbtn" value="Either"/>
-		<div id="soldDropdownContent" class="dropdown-content  sm-dropdown">
-			<button class="sold-menu-button">Either</button>
-			<button class="sold-menu-button">Yes</button>
-			<button class="sold-menu-button">No</button>
-		</div>
-	</div>
-	
-	<button id="searchButton">Search</button>
-	
-</div>
+<% include ../partials/search-bar %>
 
 <div class="container-fluid row" style="display: flex; flex-wrap: wrap;z-index:-1;">
 	<% works.forEach(function(work) { %>

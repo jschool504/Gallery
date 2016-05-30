@@ -20,7 +20,7 @@ $(document).ready(function() {
 	var widthParam = location.href.split("&w=")[1];
 	if (widthParam != null) {
 		widthParam = widthParam.split("&")[0].split("%22")[0];
-		if (widthParam != "Any") {
+		if (widthParam != "Width") {
 			widthParam = widthParam.split("&") + "\"";
 		}
 		$("#widthDropdownButton").val(widthParam);
@@ -29,7 +29,7 @@ $(document).ready(function() {
 	var heightParam = location.href.split("&h=")[1];
 	if (heightParam != null) {
 		heightParam = heightParam.split("&")[0].split("%22")[0];
-		if (heightParam != "Any") {
+		if (heightParam != "Height") {
 			heightParam = heightParam.split("&") + "\"";
 		}
 		$("#heightDropdownButton").val(heightParam);

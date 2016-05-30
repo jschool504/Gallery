@@ -10,39 +10,39 @@ var connection = db.getConnection();
 // index
 
 router.get("/works/search", function(request, response) {
-	var searchTerm = "%";
-	if (request.query.f != "Any") {
-		searchTerm = request.query.f;
+	var typeTerm = "%";
+	if (request.query.f != "Type") {
+		typeTerm = request.query.f;
 	}
 	
 	var widthTerm = "%";
-	if (request.query.w != "Any") {
+	if (request.query.w != "Width") {
 		widthTerm = request.query.w.split("\"")[0];
 	}
 	
 	var heightTerm = "%";
-	if (request.query.h != "Any") {
+	if (request.query.h != "Height") {
 		heightTerm = request.query.h.split("\"")[0];
 	}
 	
 	var genreTerm = "%";
-	if (request.query.g != "Any") {
+	if (request.query.g != "Genre") {
 		genreTerm = request.query.g;
 	}
 	
 	var tmpSoldQuery = "";
-	if (request.query.s != "Either") {
+	if (request.query.s != "All") {
 		tmpSoldQuery = "AND sold LIKE ";
-		if (request.query.s == "Yes") {
+		if (request.query.s == "Available") {
 			tmpSoldQuery += "1";
-		} else if (request.query.s == "No") {
+		} else if (request.query.s == "Unavailable") {
 			tmpSoldQuery += "0";
 		}
 	}
 	
 	var search_query = "SELECT * FROM Works WHERE title LIKE '%";
 	search_query = search_query + request.query.q + "%' ";
-	search_query = search_query + "AND type LIKE '" + searchTerm + "' ";
+	search_query = search_query + "AND type LIKE '" + typeTerm + "' ";
 	search_query = search_query + "AND width LIKE '" + widthTerm + "' ";
 	search_query = search_query + "AND height LIKE '" + heightTerm + "' ";
 	search_query = search_query + "AND genre LIKE '" + genreTerm + "' ";
