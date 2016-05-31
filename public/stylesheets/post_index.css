@@ -1,0 +1,41 @@
+/* Post List */
+
+.col-lg-1 {
+	width: 225px;
+	padding-left: 20px;
+	padding-right: 0;
+	padding-bottom: 0px;
+}
+
+.preview-post-panel {
+	text-align: left;
+	background-color: #EBEBEB;
+	border: 2px solid black;
+	color: black;
+	box-shadow: 5px 5px 10px #595959;
+	margin-bottom: 20px;
+	padding: 15px;
+}
+
+.preview-post-panel>a {
+	color: black;
+	font-weight: bold;
+	font-size: 12pt;
+	padding-bottom: 15px;
+}
+
+.preview-post-panel>a>p {
+	color: black;
+	font-style: italic;
+	font-size: 8pt;
+	margin-bottom: 0px;
+}
+
+#post-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+body {
+	background-image: url("../images/grayfabricdark.jpg");
+}

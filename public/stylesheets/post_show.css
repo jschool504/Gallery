@@ -1,0 +1,36 @@
+/* Post Show Page */
+
+.post-panel {
+	background-color: #EBEBEB;
+	border: 3px solid black;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	max-width: 700px;
+	color: black;
+	box-shadow: 5px 5px 10px #595959;
+}
+
+.post-panel>h1 {
+	font-size: 24pt;
+	margin-top: 0;
+}
+
+.post-panel>div {
+	display: block;
+}
+
+.post-panel>div img {
+	border: 2px solid black;
+}
+
+.post-panel>p {
+	font-size: 12pt;
+	font-style: italic;
+}
+
+body {
+	background-image: url("../images/grayfabricdark.jpg");
+}
