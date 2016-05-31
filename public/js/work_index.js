@@ -41,12 +41,12 @@ $(document).ready(function() {
 	}
 	
 	var search = function() {
-	location.href = "/works/search?q=" + $("#searchField").val() +
-		"&f=" + $("#typeDropButton").val() +
-		"&g=" + $("#genreDropdownButton").val() +
-		"&w=" + $("#widthDropdownButton").val() +
-		"&h=" + $("#heightDropdownButton").val() +
-		"&s=" + $("#soldDropdownButton").val()
+		location.href = "/works/search?q=" + $("#searchField").val() +
+			"&f=" + $("#typeDropButton").val() +
+			"&g=" + $("#genreDropdownButton").val() +
+			"&w=" + $("#widthDropdownButton").val() +
+			"&h=" + $("#heightDropdownButton").val() +
+			"&s=" + $("#soldDropdownButton").val()
 	};
 
 	//Event Handlers

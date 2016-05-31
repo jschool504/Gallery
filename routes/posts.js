@@ -9,11 +9,56 @@ var connection = db.getConnection();
 
 // index
 
+router.get("/posts/search", function(request, response) {
+	
+	var categoryTerm = "%";
+	if (request.query.c != "All") {
+		categoryTerm = request.query.c;
+	}
+	
+	var searchTerm = "%";
+	if (request.query.q != null) {
+		searchTerm = request.query.q;
+	}
+	
+	var search_query = "SELECT * FROM Posts WHERE title LIKE '%" +
+	searchTerm + "%' AND category LIKE '" + categoryTerm +
+	"' ORDER BY date DESC";
+	
+	console.log(search_query);
+	connection.query(search_query, function(error, searchRows, fields) {
+		if (error) {
+			console.log(error);
+		}
+		
+		var category_query = "SELECT DISTINCT category FROM Posts ORDER BY category ASC";
+		console.log(category_query);
+		connection.query(category_query, function(error, categoryRows, fields) {
+			if (error) {
+				console.log(error);
+			}
+			
+			response.render("post/index", {posts:searchRows, postCategories:categoryRows});
+		});
+	});
+});
+
 router.get("/posts", function(request, response) {
-	connection.query("SELECT * FROM Posts ORDER BY date DESC", function(error, rows, fields) {
-		response.render("post/index", {posts:rows});
-	})
-})
+	
+	
+	var post_query = "SELECT * FROM Posts ORDER BY date DESC";
+	console.log(post_query);
+	connection.query(post_query, function(error, postRows, fields) {
+		
+		var category_query = "SELECT DISTINCT category FROM Posts ORDER BY category ASC";
+		console.log(category_query);
+		connection.query(category_query, function(error, categoryRows) {
+		
+			response.render("post/index", {posts:postRows, postCategories:categoryRows});
+		
+		});
+	});
+});
 
 // add
 
@@ -22,7 +67,10 @@ router.get("/posts/new", middleware.isLoggedIn, function(request, response) {
 });
 
 router.post("/posts", middleware.isLoggedIn, function(request, response) {
-	connection.query("INSERT INTO Posts (title, date, content, category) VALUES ('" + request.body.title + "','" + request.body.date + "','" + request.body.content + "','" + request.body.category + "')", function(error, rows, fields) {
+	connection.query("INSERT INTO Posts (title, date, content, category) VALUES ('" +
+	request.body.title + "','" + request.body.date + "','" +
+	request.body.content + "','" + request.body.category + "')",
+	function(error, rows, fields) {
 		response.redirect("/posts");
 	});
 });

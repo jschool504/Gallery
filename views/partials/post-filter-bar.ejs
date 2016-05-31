@@ -1,0 +1,28 @@
+<script src="/js/post_index.js"></script>
+<link rel="stylesheet" href="/stylesheets/post_filter_bar.css"/>
+
+<nav id="filterBar" class="navbar navbar-inverse" style="z-index:1;">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<input type="text" id="postSearchField" placeholder="Search"/>
+			<button id="postSearchButton">Search</button>
+			<button id="filterMenuButton" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#filterMenu">Filters</button>
+		</div>
+		
+		<div id="filterMenu" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					<p id="filterMenuLabel">Categories:</p>
+				</li>
+				<li>
+					<button id="All" class="dropbtn">All</button>
+				</li>
+				<% postCategories.forEach(function(postCategory) { %>
+				<li class="dropdown">
+					<button id="<%= postCategory.category.split(' ').join('') %>" class="dropbtn"><%= postCategory.category %></button>
+				</li>
+				<% }); %>
+			</ul>
+		</div>
+	</div>
+</nav>

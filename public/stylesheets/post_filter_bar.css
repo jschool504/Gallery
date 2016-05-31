@@ -1,0 +1,69 @@
+/* filter bar */
+
+.search-bar {
+	background-color: black;
+	opacity: 0.85;
+	padding: 15px;
+	position: relative;
+}
+
+#postSearchField {
+    font-size: 12pt;
+    border: none;
+    padding: 5px 4px;
+    vertical-align: top;
+    background-color: white;
+    color: black;
+    outline: 0;
+}
+
+#postSearchButton {
+	transition: 0.3s background-color;
+    background-color: white;
+    margin-left: 5px;
+    border: none;
+    color: black;
+    font-size: 12pt;
+    padding: 5px 10px;
+}
+
+#postSearchButton:hover {
+	transition: 0.3s background-color;
+	background-color: lightgray;
+}
+
+#filterBar {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#filterMenuLabel {
+	margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+/* Dropdown */
+
+.dropbtn {
+	transition: 0.3s background-color;
+	background-color: white;
+	color: black;
+	padding: 5px 15px;
+	font-size: 12pt;
+	border: none;
+	cursor: pointer;
+	outline: 0;
+	text-align: center;
+}
+
+.dropbtnSelected {
+	background-color: lightgray;
+}
+
+.dropbtn:hover {
+	transition: 0.3s background-color;
+	background-color: lightgray;
+}
