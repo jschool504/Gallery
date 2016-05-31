@@ -1,10 +1,12 @@
 <% include ../partials/header %>
 
+<script src="/js/post_show.js"></script>
+
 <div class="post-panel">
 	<h1><%= post.title %></h1>
 	<p><%= post.date %> | <%= post.category %></p>
 	<div style="visibility: hidden; display: none;" id="postContentData"><%= post.content %></div>
-	<div id="postContent"><%= post.content %></div>
+	<div id="postContent"></div>
 	<% if (currentUser) {%>
 		<div id="post-admin-paragraph">
 			<form class="delete-form" action="<%= post.id %>?_method=DELETE" method="post">

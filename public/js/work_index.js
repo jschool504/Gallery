@@ -49,7 +49,7 @@ $(document).ready(function() {
 			"&s=" + $("#soldDropdownButton").val()
 	};
 
-	//Event Handlers
+	// Event Handlers
 	$("#searchButton").click(function() {
 		search();
 	});
@@ -60,13 +60,13 @@ $(document).ready(function() {
 		}
 	});
 
-	//General Dropdown Events
+	// General Dropdown Events
 
 	$(".dropdown-content").click(function(e) {
 		e.stopPropagation();
 	});
 
-	//Type dropdown
+	// Type dropdown
 
 	$(document).click(function() {
 		$("#typeDropdownContent").hide();
@@ -83,7 +83,7 @@ $(document).ready(function() {
 		search();
 	});
 
-	//Genre dropdown
+	// Genre dropdown
 
 	$(document).click(function() {
 		$("#genreDropdownContent").hide();
@@ -100,7 +100,7 @@ $(document).ready(function() {
 		search();
 	});
 
-	//Width dropdown
+	// Width dropdown
 
 	$(document).click(function() {
 		$("#widthDropdownContent").hide();
@@ -117,7 +117,7 @@ $(document).ready(function() {
 		search();
 	});
 
-	//Height dropdown
+	// Height dropdown
 
 	$(document).click(function() {
 		$("#heightDropdownContent").hide();
@@ -134,7 +134,7 @@ $(document).ready(function() {
 		search();
 	});
 
-	//Sold dropdown
+	// Sold dropdown
 
 	$(document).click(function() {
 		$("#soldDropdownContent").hide();

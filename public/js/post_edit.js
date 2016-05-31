@@ -1,12 +1,12 @@
 $(document).ready(function() {
 	
-	//UI Setup
+	// UI Setup
 	var postContent = document.getElementById("postContent");
 	if (postContent != null) {
 		postContent.innerHTML = document.getElementById("postContentData").innerText;
 	}
 	
-	//Set up Squire
+	// Set up Squire
 	$("#postContentEditor").ready(function() {
 		var div_editor = document.getElementById("postContentEditor");
 		editor = new Squire(div_editor, {
@@ -25,7 +25,7 @@ $(document).ready(function() {
 		editor.setHTML(document.getElementById("postContentArea").innerText);
 		//$("#postContentDiv").remove();
 		
-		//Event Handlers for Squire
+		// Event Handlers for Squire
 		$(".post-edit-button").click(function(e) {
 			var action;
 			var value;
