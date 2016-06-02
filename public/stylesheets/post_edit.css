@@ -1,0 +1,39 @@
+.font-menu-button {
+	transition: 0.3s background-color;
+	background-color: white;
+	color: black;
+	padding: 5px 15px;
+	margin: 0;
+	font-size: 12pt;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+
+.font-menu-button:hover {
+	transition: 0.3s background-color;
+	background-color: lightgray;
+	text-align: center;
+}
+
+#fontSizeField {
+	color: black;
+	font-size: 10pt;
+	padding: 7px 7px 4px 4px;
+	width: 44px;
+	outline: 0;
+	background-color: white;
+	border: none;
+}
+
+#fontDropdownContent {
+	margin-left: 0;
+}
+
+#editButtonList {
+	float: none;
+}
+
+#editButtonList > li {
+	margin-left: 5px;
+}

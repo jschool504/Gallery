@@ -7,6 +7,32 @@
 	padding: 0;
 }
 
+.dropbtn {
+	transition: 0.3s background-color;
+	background-color: white;
+	color: black;
+	padding: 5px 15px;
+	font-size: 12pt;
+	border: none;
+	cursor: pointer;
+	outline: 0;
+	margin-left: 10px;
+	text-align: center;
+}
+
+.dropbtn:hover {
+	transition: 0.3s background-color;
+	background-color: lightgray;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	margin-left: 10px;
+}
+
 /* Work Show Page */
 .work-container {
 	margin-left: 20px;

@@ -69,12 +69,12 @@ $(document).ready(function() {
 	// Type dropdown
 
 	$(document).click(function() {
-		$("#typeDropdownContent").hide();
+		$("#typeDropdownContent").hide(); //hide when u click off of the dropdown
 	});
 
 	$("#typeDropButton").click(function(e) {
-		e.stopPropagation();
-		$("#typeDropdownContent").show();
+		e.stopPropagation(); // stops the click event from propagating to higher level objects
+		$("#typeDropdownContent").show(); 
 	});
 
 	$(".type-menu-button").click(function(e) {

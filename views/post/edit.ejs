@@ -1,6 +1,7 @@
 <% include ../partials/header %>
 
 <script src="/js/post_edit.js"></script>
+<link rel="stylesheet" href="/stylesheets/post_edit.css">
 
 <div id="edit-container">
 	
@@ -17,19 +18,32 @@
 				<input class="form-control" type="text" name="category" placeholder="Category" value="<%= post.category %>">
 			</div>
 			<div class="form-group">
-				<button type="button" class="post-edit-button" id="boldButton">B</button>
-				<button type="button" class="post-edit-button" id="italicButton">I</button>
-				<button type="button" class="post-edit-button" id="underlineButton">U</button>
-				<button type="button" class="post-edit-button" id="fontButton">F</button>
-				<button type="button" class="post-edit-button" id="imgButton">Image</button>
-				<button type="button" class="post-edit-button" id="linkButton">Link</button>
-				<button type="button" class="post-edit-button" id="leftAlignButton">L</button>
-				<button type="button" class="post-edit-button" id="centerAlignButton">M</button>
-				<button type="button" class="post-edit-button" id="rightAlignButton">R</button>
+				<ul class="nav navbar-nav" id="editButtonList">
+					<li><button type="button" class="post-edit-button" id="boldButton">B</button></li>
+					<li><button type="button" class="post-edit-button" id="italicButton">I</button></li>
+					<li><button type="button" class="post-edit-button" id="underlineButton">U</button></li>
+					<li>
+						<input type="button" class="post-edit-button" id="fontDropdownButton" value="Fonts"/>
+						<div id="fontDropdownContent" class="dropdown-content">
+							<p class="font-menu-button">Arial</p>
+							<p class="font-menu-button">Helvetica</p>
+							<p class="font-menu-button">Times</p>
+							<p class="font-menu-button">Courier</p>
+						</div>
+					</li>
+					<li>
+						<input type="number" id="fontSizeField"/>
+					</li>
+					<li><button type="button" class="post-edit-button" id="imgButton">Image</button></li>
+					<li><button type="button" class="post-edit-button" id="linkButton">Link</button></li>
+					<li><button type="button" class="post-edit-button" id="leftAlignButton">L</button></li>
+					<li><button type="button" class="post-edit-button" id="centerAlignButton">M</button></li>
+					<li><button type="button" class="post-edit-button" id="rightAlignButton">R</button></li>
+				</ul>
 			</div>
 			<div class="form-group">
 				<textarea style="visibility: hidden; display: none;" name="content" id="postContentArea"><%= post.content %></textarea>
-				<div id="postContentEditor" contentEditable="true"></div>
+				<div id="postContentEditor" contentEditable="true" autofocus></div>
 			</div>
 			<div class="form-group">
 				<button class="form-control" class="btn btn-primary">Submit!</button>

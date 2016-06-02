@@ -8,6 +8,8 @@ $(document).ready(function() {
 	
 	// Set up Squire
 	$("#postContentEditor").ready(function() {
+		var saved_selection = null;
+		
 		var div_editor = document.getElementById("postContentEditor");
 		editor = new Squire(div_editor, {
 			blockTag: "p",
@@ -24,6 +26,30 @@ $(document).ready(function() {
 		
 		editor.setHTML(document.getElementById("postContentArea").innerText);
 		//$("#postContentDiv").remove();
+		
+		// Font Dropdown Events
+		
+		$(document).click(function() {
+			$("#fontDropdownContent").hide();
+		});
+		
+		$("#fontDropdownButton").click(function(e) {
+			e.stopPropagation();
+			$("#fontDropdownContent").show();
+		});
+		
+		$(".font-menu-button").click(function(e) {
+			e.stopPropagation();
+			$("#fontDropdownContent").hide();
+			$("#fontDropdownButton").val(e.currentTarget.textContent);
+			editor["setFontFace"](e.currentTarget.textContent);
+		});
+		
+		// Font Size Field Events
+		
+		$("#fontSizeField").change(function(e) {
+			editor.setFontSize(parseInt($("#fontSizeField").val()));
+		});
 		
 		// Event Handlers for Squire
 		$(".post-edit-button").click(function(e) {
@@ -50,8 +76,6 @@ $(document).ready(function() {
 				}
 			} else if (e.currentTarget.id == "imgButton") {
 				
-			} else if (e.currentTarget.id == "fontButton") {
-				
 			} else if (e.currentTarget.id == "linkButton") {
 			
 			} else if (e.currentTarget.id == "leftAlignButton") {
@@ -66,8 +90,15 @@ $(document).ready(function() {
 			return false;
 		});
 		
+		
+		
 		editor.addEventListener("input", function() {
 			document.getElementById("postContentArea").innerText = editor.getHTML();
+		});
+		
+		editor.addEventListener("pathChange", function() {
+			$("#fontDropdownButton").val(editor.getFontInfo().family.split(",")[0]);
+			$("#fontSizeField").val(parseInt(editor.getFontInfo().size.split("px")[0]));
 		});
 	});
 	
