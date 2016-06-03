@@ -37,3 +37,12 @@
 #editButtonList > li {
 	margin-left: 5px;
 }
+
+#publicLi {
+	margin-top:5px;
+}
+
+#publicLabel {
+	vertical-align: top;
+	margin-left:5px;
+}

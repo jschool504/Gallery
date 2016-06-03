@@ -8,7 +8,8 @@
 	<% posts.forEach(function(post) { %>
 		<div class="col-lg-1">
 			<div class="preview-post-panel">
-				<a href="/posts/<%= post.id %>"><%= post.title %><p><%= post.date %> | <%= post.category %></p></a>
+				<a href="/posts/<%= post.id %>"><%= post.title %><p><%= post.date %> | <%= post.category %>
+				<% if (currentUser !== null && post.display == 0) { %>| <span style="color:red">Private</span><% } %></p></a>
 			</div>
 		</div>
 	<% }); %>

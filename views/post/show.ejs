@@ -5,7 +5,8 @@
 
 <div class="post-panel">
 	<h1><%= post.title %></h1>
-	<p><%= post.date %> | <%= post.category %></p>
+	<p><%= post.date %> | <%= post.category %>
+	<% if (currentUser !== null && post.display == 0) { %>| <span style="color:red">Private</span><% } %></p></a></p>
 	<div style="visibility: hidden; display: none;" id="postContentData"><%= post.content %></div>
 	<div id="postContent"></div>
 	<% if (currentUser) {%>
