@@ -21,15 +21,15 @@ router.get("/posts/search", function(request, response) {
 		searchTerm = request.query.q;
 	}
 	
-	var showAll = "AND display=1 ";
+	var showAll = "1";
 	
 	if (response.locals.currentUser) {
-		showAll = "";
+		showAll = "1 OR display=0";
 	}
 	
 	var search_query = "SELECT * FROM Posts WHERE title LIKE '%" +
-	searchTerm + "%' AND category LIKE '" + categoryTerm + "' " + showAll +
-	"ORDER BY date DESC";
+	searchTerm + "%' AND category LIKE '" + categoryTerm + "' AND display=" + showAll +
+	" ORDER BY date DESC";
 	
 	console.log(search_query);
 	connection.query(search_query, function(error, searchRows, fields) {
@@ -37,7 +37,7 @@ router.get("/posts/search", function(request, response) {
 			console.log(error);
 		}
 		
-		var category_query = "SELECT DISTINCT category FROM Posts ORDER BY category ASC";
+		var category_query = "SELECT DISTINCT category FROM Posts WHERE display=" + showAll + " ORDER BY category ASC";
 		console.log(category_query);
 		connection.query(category_query, function(error, categoryRows, fields) {
 			if (error) {
@@ -51,13 +51,13 @@ router.get("/posts/search", function(request, response) {
 
 router.get("/posts", function(request, response) {
 	
-	var showAll = "WHERE display=1 ";
+	var showAll = "1";
 	
 	if (response.locals.currentUser) {
-		showAll = "";
+		showAll = "1 OR display=0";
 	}
 	
-	var post_query = "SELECT * FROM Posts " + showAll + "ORDER BY date DESC";
+	var post_query = "SELECT * FROM Posts WHERE display=" + showAll + " ORDER BY date DESC";
 	console.log(post_query);
 	connection.query(post_query, function(error, postRows, fields) {
 		
@@ -65,7 +65,7 @@ router.get("/posts", function(request, response) {
 			console.log(error);
 		}
 		
-		var category_query = "SELECT DISTINCT category FROM Posts ORDER BY category ASC";
+		var category_query = "SELECT DISTINCT category FROM Posts WHERE display=" + showAll + " ORDER BY category ASC";
 		console.log(category_query);
 		connection.query(category_query, function(error, categoryRows) {
 			
