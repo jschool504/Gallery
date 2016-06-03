@@ -46,3 +46,14 @@
 	vertical-align: top;
 	margin-left:5px;
 }
+
+#linkField {
+	color: black;
+	height: 30px;
+	width: auto;
+	display: inline;
+}
+
+#linkButton {
+	color: black;
+}

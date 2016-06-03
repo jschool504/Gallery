@@ -77,7 +77,7 @@ $(document).ready(function() {
 			} else if (e.currentTarget.id == "imgButton") {
 				
 			} else if (e.currentTarget.id == "linkButton") {
-			
+				editor["makeLink"]($("#linkField").val());
 			} else if (e.currentTarget.id == "leftAlignButton") {
 				editor.setTextAlignment("left");
 			} else if (e.currentTarget.id == "centerAlignButton") {
