@@ -75,7 +75,7 @@ $(document).ready(function() {
 					editor["underline"]();
 				}
 			} else if (e.currentTarget.id == "imgButton") {
-				
+				//editor.insertImage($("#imgField").val());
 			} else if (e.currentTarget.id == "linkButton") {
 				editor["makeLink"]($("#linkField").val());
 			} else if (e.currentTarget.id == "leftAlignButton") {
@@ -90,8 +90,6 @@ $(document).ready(function() {
 			return false;
 		});
 		
-		
-		
 		editor.addEventListener("input", function() {
 			document.getElementById("postContentArea").innerText = editor.getHTML();
 		});
@@ -99,6 +97,39 @@ $(document).ready(function() {
 		editor.addEventListener("pathChange", function() {
 			$("#fontDropdownButton").val(editor.getFontInfo().family.split(",")[0]);
 			$("#fontSizeField").val(parseInt(editor.getFontInfo().size.split("px")[0]));
+		});
+		
+		editor.addEventListener("click", function(e) {
+			var imgs = document.querySelectorAll("img");
+			
+			for (var i = 0; i < imgs.length; i++) {
+				if (imgs[i].src == $("#imgField").val()) {
+					imgs[i].style.border = "2px solid black";
+				}
+			}
+			
+			if (e.target.nodeName == "IMG") {
+				$("#imgField").val(e.target.src);
+				$("#imgWidthField").val(e.target.width + 4); // +4 to adjust for border
+				$("#imgHeightField").val(e.target.height + 4);
+				e.target.style.border = "2px dashed black";
+			} else {
+				$("#imgField").val("");
+				$("#imgWidthField").val("");
+				$("#imgHeightField").val("");
+			}
+			
+		}, false);
+		
+		$("#imgButton").click(function(e) {
+			$("img").each(function(idx, img) {
+				if (document.getElementById("imgField").value == img.src) {
+					img.width = $("#imgWidthField").val();
+					img.height = $("#imgHeightField").val();
+				} else if (document.getElementById("imgField").value == "") {
+					editor.insertImage($("#imgField").val());
+				}
+			});
 		});
 	});
 	

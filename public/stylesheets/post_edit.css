@@ -47,13 +47,36 @@
 	margin-left:5px;
 }
 
-#linkField {
+.size-field {
+	width: 64px;
+}
+
+.src-field {
 	color: black;
 	height: 30px;
-	width: auto;
 	display: inline;
+}
+
+#linkField, #imgField {
+	transition: 0.2s width;
+	width: 100px;
+}
+
+#linkField:focus, #imgField:focus {
+	transition: 0.2s width;
+	width: 300px;
 }
 
 #linkButton {
 	color: black;
+}
+
+#imgButton {
+	color: black;
+}
+
+img {
+	transition: border-color 0.3s;
+	transition: width 0.5s, height 0.5s;
+	border: 2px solid black;
 }
