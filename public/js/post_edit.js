@@ -55,7 +55,7 @@ $(document).ready(function() {
 		$(".post-edit-button").click(function(e) {
 			var action;
 			var value;
-			console.log(editor.getPath());
+			
 			if (e.currentTarget.id === "boldButton") {
 				if (editor.hasFormat("b")) {
 					editor["removeBold"]();
@@ -75,7 +75,38 @@ $(document).ready(function() {
 					editor["underline"]();
 				}
 			} else if (e.currentTarget.id == "imgButton") {
-				//editor.insertImage($("#imgField").val());
+				$("img").each(function(idx, img) {
+					if (document.getElementById("imgField").value == img.src) {
+						img.width = $("#imgWidthField").val();
+						img.height = $("#imgHeightField").val();
+					} else if (document.getElementById("imgField").value == "") {
+						editor.insertImage($("#imgField").val());
+					}
+				});
+			} else if (e.currentTarget.id == "imgFloatRightButton") {
+				$("img").each(function(idx, img) {
+					if (document.getElementById("imgField").value == img.src) {
+						img.style.float = "right";
+						img.style.margin = "0";
+						img.style.marginLeft = "10px";
+					}
+				});
+			} else if (e.currentTarget.id == "imgUnfloatButton") {
+				$("img").each(function(idx, img) {
+					if (document.getElementById("imgField").value == img.src) {
+						img.style.float = "none";
+						img.style.margin = "0";
+						img.style.marginRight = "10px";
+					}
+				});
+			} else if (e.currentTarget.id == "imgFloatLeftButton") {
+				$("img").each(function(idx, img) {
+					if (document.getElementById("imgField").value == img.src) {
+						img.style.float = "left";
+						img.style.margin = "0";
+						img.style.marginRight = "10px";
+					}
+				});
 			} else if (e.currentTarget.id == "linkButton") {
 				editor["makeLink"]($("#linkField").val());
 			} else if (e.currentTarget.id == "leftAlignButton") {
@@ -120,17 +151,6 @@ $(document).ready(function() {
 			}
 			
 		}, false);
-		
-		$("#imgButton").click(function(e) {
-			$("img").each(function(idx, img) {
-				if (document.getElementById("imgField").value == img.src) {
-					img.width = $("#imgWidthField").val();
-					img.height = $("#imgHeightField").val();
-				} else if (document.getElementById("imgField").value == "") {
-					editor.insertImage($("#imgField").val());
-				}
-			});
-		});
 	});
 	
 });
