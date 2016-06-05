@@ -2,6 +2,7 @@ var express = require("express");
 var bcrypt = require("bcrypt-nodejs");
 var middleware = require("../middleware");
 var router = express.Router();
+var helpers = require("../helpers");
 
 var passport = require("passport");
 
@@ -32,8 +33,7 @@ router.get("/signup", middleware.isLoggedIn, function(request, response) {
 
 router.post("/signup", middleware.isLoggedIn, function(request, response) {
 	var signup_query = "INSERT INTO Users (name, password) VALUES ('" + request.body.username + "','" + bcrypt.hashSync(request.body.password) + "')";
-	console.log(signup_query);
-	connection.query(signup_query, function(error) {
+	connection.query(helpers.logQuery(signup_query), function(error) {
 		response.redirect("/");
 	});
 });

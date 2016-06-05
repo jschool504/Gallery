@@ -157,7 +157,6 @@ $(document).ready(function() {
 		editor.addEventListener("click", function(e) {
 			deselectImgs();
 			selectImg(e);
-			
 		}, false);
 		
 		$("#editForm").submit(function(e) {

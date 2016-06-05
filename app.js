@@ -5,6 +5,7 @@ var passport = require("passport");
 var bcrypt = require("bcrypt-nodejs");
 var LocalStrategy = require("passport-local");
 var app = express();
+var helpers = require("./helpers");
 
 var db = require("./models/db");
 db.createConnection();
@@ -33,7 +34,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(
 	function(username, password, done) {
-		connection.query("SELECT * FROM Users WHERE Users.name = '" + username + "' LIMIT 1", function(error, rows, fields) {
+		var find_user_query = "SELECT * FROM Users WHERE Users.name = '" + username + "' LIMIT 1";
+		connection.query(helpers.logQuery(find_user_query), function(error, rows, fields) {
 			if (error) {
 				return done(error);
 			}
@@ -58,7 +60,8 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-	connection.query("SELECT * FROM Users WHERE Users.id = " + id, function(error, rows, fields) {
+	var find_user_query = "SELECT * FROM Users WHERE Users.id = " + id;
+	connection.query(helpers.logQuery(find_user_query), function(error, rows, fields) {
 		return done(error, rows[0]);
 	});
 });

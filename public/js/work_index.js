@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	var searchParam = location.href.split("?q=")[1];
 	if (searchParam != null) {
-		$("#searchField").val(searchParam.split("&")[0]);
+		$("#searchField").val(searchParam.split("&")[0].split("%27").join("'"));
 	}
 
 	var typeParam = location.href.split("&f=")[1];

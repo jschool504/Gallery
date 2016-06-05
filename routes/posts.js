@@ -2,6 +2,7 @@ var express = require("express");
 var db = require("../models/db");
 var middleware = require("../middleware");
 var router = express.Router();
+var helpers = require("../helpers");
 
 var connection = db.getConnection();
 
@@ -31,15 +32,13 @@ router.get("/posts/search", function(request, response) {
 	searchTerm + "%' AND category LIKE '" + categoryTerm + "' AND display=" + showAll +
 	" ORDER BY date DESC";
 	
-	console.log(search_query);
-	connection.query(search_query, function(error, searchRows, fields) {
+	connection.query(helpers.logQuery(search_query), function(error, searchRows, fields) {
 		if (error) {
 			console.log(error);
 		}
 		
 		var category_query = "SELECT DISTINCT category FROM Posts WHERE display=" + showAll + " ORDER BY category ASC";
-		console.log(category_query);
-		connection.query(category_query, function(error, categoryRows, fields) {
+		connection.query(helpers.logQuery(category_query), function(error, categoryRows, fields) {
 			if (error) {
 				console.log(error);
 			}
@@ -58,16 +57,14 @@ router.get("/posts", function(request, response) {
 	}
 	
 	var post_query = "SELECT * FROM Posts WHERE display=" + showAll + " ORDER BY date DESC";
-	console.log(post_query);
-	connection.query(post_query, function(error, postRows, fields) {
+	connection.query(helpers.logQuery(post_query), function(error, postRows, fields) {
 		
 		if (error) {
 			console.log(error);
 		}
 		
 		var category_query = "SELECT DISTINCT category FROM Posts WHERE display=" + showAll + " ORDER BY category ASC";
-		console.log(category_query);
-		connection.query(category_query, function(error, categoryRows) {
+		connection.query(helpers.logQuery(category_query), function(error, categoryRows) {
 			
 			if (error) {
 				console.log(error);
@@ -94,10 +91,8 @@ router.post("/posts", middleware.isLoggedIn, function(request, response) {
 	var add_query = "INSERT INTO Posts (title, date, content, category, display) VALUES ('" +
 	request.body.title + "','" + request.body.date + "','" +
 	request.body.content + "','" + request.body.category + "'," + displayStatus + ")";
-	
-	console.log(add_query);
-	
-	connection.query(add_query, function(error, rows, fields) {
+		
+	connection.query(helpers.logQuery(add_query), function(error, rows, fields) {
 		if (error) {
 			console.log(error);
 		}
@@ -110,8 +105,7 @@ router.post("/posts", middleware.isLoggedIn, function(request, response) {
 
 router.get("/posts/:id/edit", middleware.isLoggedIn, function(request, response) {
 	var edit_query = "SELECT * FROM Posts WHERE id=" + request.params.id;
-	console.log(edit_query);
-	connection.query(edit_query, function(error, rows, fields) {
+	connection.query(helpers.logQuery(edit_query), function(error, rows, fields) {
 		if (error) {
 			console.log(error);
 		}
@@ -133,8 +127,7 @@ router.put("/posts/:id", middleware.isLoggedIn, function(request, response) {
 	"',display=" + displayStatus +
 	" WHERE id=" + request.params.id;
 	
-	console.log(update_query);
-	connection.query(update_query, function(error, rows, fields) {
+	connection.query(helpers.logQuery(update_query), function(error, rows, fields) {
 		if (error) {
 			console.log(error);
 			response.redirect("/posts/");
@@ -148,8 +141,7 @@ router.put("/posts/:id", middleware.isLoggedIn, function(request, response) {
 
 router.delete("/posts/:id", middleware.isLoggedIn, function(request, response) {
 	var delete_query = "DELETE FROM Posts WHERE id=" + request.params.id;
-	console.log(delete_query);
-	connection.query(delete_query, function(error, rows, fields) {
+	connection.query(helpers.logQuery(delete_query), function(error, rows, fields) {
 		if (error) {
 			console.log(error);
 		}
@@ -162,8 +154,7 @@ router.delete("/posts/:id", middleware.isLoggedIn, function(request, response) {
 
 router.get("/posts/:id", function(request, response) {
 	var show_query = "SELECT * FROM Posts WHERE id=" + request.params.id
-	console.log(show_query);
-	connection.query(show_query, function(error, rows, fields) {
+	connection.query(helpers.logQuery(show_query), function(error, rows, fields) {
 		if (error) {
 			console.log(error);
 		} else if (response.locals.currentUser == null && rows[0].display != 1) {
