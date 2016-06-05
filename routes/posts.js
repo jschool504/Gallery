@@ -90,10 +90,18 @@ router.post("/posts", middleware.isLoggedIn, function(request, response) {
 	if (request.body.display == "on") {
 		displayStatus = 1;
 	}
-	connection.query("INSERT INTO Posts (title, date, content, category, display) VALUES ('" +
+	
+	var add_query = "INSERT INTO Posts (title, date, content, category, display) VALUES ('" +
 	request.body.title + "','" + request.body.date + "','" +
-	request.body.content + "','" + request.body.category + "'," + displayStatus + ")",
-	function(error, rows, fields) {
+	request.body.content + "','" + request.body.category + "'," + displayStatus + ")";
+	
+	console.log(add_query);
+	
+	connection.query(add_query, function(error, rows, fields) {
+		if (error) {
+			console.log(error);
+		}
+		
 		response.redirect("/posts");
 	});
 });
@@ -101,7 +109,9 @@ router.post("/posts", middleware.isLoggedIn, function(request, response) {
 // edit
 
 router.get("/posts/:id/edit", middleware.isLoggedIn, function(request, response) {
-	connection.query("SELECT * FROM Posts WHERE id=" + request.params.id, function(error, rows, fields) {
+	var edit_query = "SELECT * FROM Posts WHERE id=" + request.params.id;
+	console.log(edit_query);
+	connection.query(edit_query, function(error, rows, fields) {
 		if (error) {
 			console.log(error);
 		}
@@ -115,25 +125,35 @@ router.put("/posts/:id", middleware.isLoggedIn, function(request, response) {
 	if (request.body.display == "on") {
 		displayStatus = 1;
 	}
-	connection.query("UPDATE Posts SET title='" + request.body.title +
+	
+	var update_query = "UPDATE Posts SET title='" + request.body.title +
 	"',date='" + request.body.date +
 	"',content='" + request.body.content +
 	"',category='" + request.body.category +
 	"',display=" + displayStatus +
-	" WHERE id=" + request.params.id, function(error, rows, fields) {
+	" WHERE id=" + request.params.id;
+	
+	console.log(update_query);
+	connection.query(update_query, function(error, rows, fields) {
 		if (error) {
-			response.redirect("/posts/" + rows[0].id + "/edit", {post:rows[0]});
 			console.log(error);
+			response.redirect("/posts/");
+		} else {
+			response.redirect("/posts/" + request.params.id);
 		}
-		
-		response.redirect("/posts/" + request.params.id);
 	});
 });
 
 // delete
 
 router.delete("/posts/:id", middleware.isLoggedIn, function(request, response) {
-	connection.query("DELETE FROM Posts WHERE id=" + request.params.id, function(error, rows, fields) {
+	var delete_query = "DELETE FROM Posts WHERE id=" + request.params.id;
+	console.log(delete_query);
+	connection.query(delete_query, function(error, rows, fields) {
+		if (error) {
+			console.log(error);
+		}
+		
 		response.redirect("/posts");
 	});
 });
@@ -141,7 +161,9 @@ router.delete("/posts/:id", middleware.isLoggedIn, function(request, response) {
 // show
 
 router.get("/posts/:id", function(request, response) {
-	connection.query("SELECT * FROM Posts WHERE id=" + request.params.id, function(error, rows, fields) {
+	var show_query = "SELECT * FROM Posts WHERE id=" + request.params.id
+	console.log(show_query);
+	connection.query(show_query, function(error, rows, fields) {
 		if (error) {
 			console.log(error);
 		} else if (response.locals.currentUser == null && rows[0].display != 1) {

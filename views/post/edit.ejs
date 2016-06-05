@@ -7,7 +7,7 @@
 	
 	<div class="black-panel" class="row">
 		<h1>Edit "<%= post.title %>"</h1>
-		<form class="" action="/posts/<%= post.id %>?_method=PUT" method="post">
+		<form id="editForm" action="/posts/<%= post.id %>?_method=PUT" method="post">
 			<div class="form-group">
 				<input class="form-control" type="text" name="title" placeholder="Title" value="<%= post.title %>">
 			</div>

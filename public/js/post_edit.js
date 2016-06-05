@@ -6,6 +6,30 @@ $(document).ready(function() {
 		postContent.innerHTML = document.getElementById("postContentData").innerText;
 	}
 	
+	// Helper Methods
+	var deselectImgs = function() {
+		var imgs = document.querySelectorAll("img");
+		
+		for (var i = 0; i < imgs.length; i++) {
+			if (imgs[i].src == $("#imgField").val()) {
+				imgs[i].style.border = "2px solid black";
+			}
+		}
+	};
+	
+	var selectImg = function(e) {
+		if (e.target.nodeName == "IMG") {
+			$("#imgField").val(e.target.src);
+			$("#imgWidthField").val(e.target.width + 4); // +4 to adjust for border
+			$("#imgHeightField").val(e.target.height + 4);
+			e.target.style.border = "2px dashed black";
+		} else {
+			$("#imgField").val("");
+			$("#imgWidthField").val("");
+			$("#imgHeightField").val("");
+		}
+	};
+	
 	// Set up Squire
 	$("#postContentEditor").ready(function() {
 		var saved_selection = null;
@@ -131,26 +155,14 @@ $(document).ready(function() {
 		});
 		
 		editor.addEventListener("click", function(e) {
-			var imgs = document.querySelectorAll("img");
-			
-			for (var i = 0; i < imgs.length; i++) {
-				if (imgs[i].src == $("#imgField").val()) {
-					imgs[i].style.border = "2px solid black";
-				}
-			}
-			
-			if (e.target.nodeName == "IMG") {
-				$("#imgField").val(e.target.src);
-				$("#imgWidthField").val(e.target.width + 4); // +4 to adjust for border
-				$("#imgHeightField").val(e.target.height + 4);
-				e.target.style.border = "2px dashed black";
-			} else {
-				$("#imgField").val("");
-				$("#imgWidthField").val("");
-				$("#imgHeightField").val("");
-			}
+			deselectImgs();
+			selectImg(e);
 			
 		}, false);
+		
+		$("#editForm").submit(function(e) {
+			deselectImgs();
+		});
 	});
 	
 });
