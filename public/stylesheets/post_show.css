@@ -22,15 +22,6 @@
 	display: block;
 }
 
-.post-panel>div img {
-	border: 2px solid black;
-}
-
-.post-panel>p {
-	font-size: 12pt;
-	font-style: italic;
-}
-
 body {
 	background-image: url("../images/grayfabricdark.jpg");
 }

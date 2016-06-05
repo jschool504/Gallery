@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="/stylesheets/post_edit.css">
+
+<div id="edit-container">
+	
+	<div class="black-panel" class="row">
+		<h1><% if (typeof(post) != "undefined") { %>Edit<% } else { %>New Post<% } %></h1>
+		<form id="editForm" action="/posts" method="post">
+			<div class="form-group">
+				<input class="form-control" type="text" name="title" placeholder="Title" <% if (typeof(post) != "undefined") { %>value="<%= post.title %>"<% } %>>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="date" name="date" placeholder="Date" <% if (typeof(post) != "undefined") { %>value="<%= post.date %>"<% } %>>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" name="category" placeholder="Category" <% if (typeof(post) != "undefined") { %>value="<%= post.category %>"<% } %>>
+			</div>
+			<div class="form-group">
+				<ul class="nav navbar-nav" id="editButtonList">
+					<li><button type="button" class="post-edit-button" id="boldButton">B</button></li>
+					<li><button type="button" class="post-edit-button" id="italicButton">I</button></li>
+					<li><button type="button" class="post-edit-button" id="underlineButton">U</button></li>
+					<li>
+						<input type="button" class="post-edit-button" id="fontDropdownButton" value="Fonts"/>
+						<div id="fontDropdownContent" class="dropdown-content">
+							<p class="font-menu-button">Arial</p>
+							<p class="font-menu-button">Helvetica</p>
+							<p class="font-menu-button">Times</p>
+							<p class="font-menu-button">Courier</p>
+						</div>
+					</li>
+					<li>
+						<input type="number" id="fontSizeField"/>
+					</li>
+					<li><button type="button" class="post-edit-button" id="leftAlignButton"><span class="glyphicon glyphicon-align-left"></span></button></li>
+					<li><button type="button" class="post-edit-button" id="centerAlignButton"><span class="glyphicon glyphicon-align-center"></span></button></li>
+					<li><button type="button" class="post-edit-button" id="rightAlignButton"><span class="glyphicon glyphicon-align-right"></span></button></li>
+					<li id="publicLi"><input type="checkbox" name="display" <% if (typeof(post) != "undefined" && post.display == 1) { %>checked<% } %>><span id="publicLabel">Public?</span></li>
+				</ul>
+			</div>
+			<div class="form-group">
+				<ul class="nav navbar-nav" id="editButtonList">
+					<li>
+						<input type="text" class="form-control src-field" id="imgField" placeholder="URL">
+						<input type="text" class="form-control src-field size-field" id="imgWidthField" placeholder="w">
+						<input type="text" class="form-control src-field size-field" id="imgHeightField" placeholder="h">
+						<button class="post-edit-button" id="imgButton">Apply</button>
+						<button class="post-edit-button" id="imgUnfloatButton">None</button>
+						<button class="post-edit-button" id="imgFloatLeftButton">Left</button>
+						<button class="post-edit-button" id="imgFloatRightButton">Right</button>
+					</li>
+					
+				</ul>
+			</div>
+			<div class="form-group">
+				<ul class="nav navbar-nav" id="editButtonList">
+					<li><input type="text" class="form-control src-field" id="linkField" placeholder="URL"><button class="post-edit-button" id="linkButton">Link</button></li>
+				</ul>
+			</div>
+			<div class="form-group">
+				<textarea style="visibility: hidden; display: none;" name="content" id="postContentArea"><% if (typeof(post) != "undefined") { %><%= post.content %><% } %></textarea>
+				<div id="postContentEditor" contentEditable="true" autofocus></div>
+			</div>
+			<div class="form-group">
+				<button class="form-control" class="btn btn-primary">Submit!</button>
+			</div>
+		</form>
+	</div>
+</div>
