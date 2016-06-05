@@ -14,12 +14,12 @@ router.get("/posts/search", function(request, response) {
 	
 	var categoryTerm = "%";
 	if (request.query.c != "All") {
-		categoryTerm = request.query.c;
+		categoryTerm = helpers.escapeSQLString(request.query.c);
 	}
 	
 	var searchTerm = "%";
 	if (request.query.q != null) {
-		searchTerm = request.query.q;
+		searchTerm = helpers.escapeSQLString(request.query.q);
 	}
 	
 	var showAll = "1";
@@ -89,8 +89,8 @@ router.post("/posts", middleware.isLoggedIn, function(request, response) {
 	}
 	
 	var add_query = "INSERT INTO Posts (title, date, content, category, display) VALUES ('" +
-	request.body.title + "','" + request.body.date + "','" +
-	request.body.content + "','" + request.body.category + "'," + displayStatus + ")";
+	helpers.escapeSQLString(request.body.title) + "','" + helpers.escapeSQLString(request.body.date) + "','" +
+	helpers.escapeSQLString(request.body.content) + "','" + helpers.escapeSQLString(request.body.category) + "'," + displayStatus + ")";
 		
 	connection.query(helpers.logQuery(add_query), function(error, rows, fields) {
 		if (error) {
@@ -104,7 +104,7 @@ router.post("/posts", middleware.isLoggedIn, function(request, response) {
 // edit
 
 router.get("/posts/:id/edit", middleware.isLoggedIn, function(request, response) {
-	var edit_query = "SELECT * FROM Posts WHERE id=" + request.params.id;
+	var edit_query = "SELECT * FROM Posts WHERE id=" + helpers.escapeSQLString(request.params.id);
 	connection.query(helpers.logQuery(edit_query), function(error, rows, fields) {
 		if (error) {
 			console.log(error);
@@ -120,12 +120,12 @@ router.put("/posts/:id", middleware.isLoggedIn, function(request, response) {
 		displayStatus = 1;
 	}
 	
-	var update_query = "UPDATE Posts SET title='" + request.body.title +
-	"',date='" + request.body.date +
-	"',content='" + request.body.content +
-	"',category='" + request.body.category +
+	var update_query = "UPDATE Posts SET title='" + helpers.escapeSQLString(request.body.title) +
+	"',date='" + helpers.escapeSQLString(request.body.date) +
+	"',content='" + helpers.escapeSQLString(request.body.content) +
+	"',category='" + helpers.escapeSQLString(request.body.category) +
 	"',display=" + displayStatus +
-	" WHERE id=" + request.params.id;
+	" WHERE id=" + helpers.escapeSQLString(request.params.id);
 	
 	connection.query(helpers.logQuery(update_query), function(error, rows, fields) {
 		if (error) {
@@ -153,7 +153,7 @@ router.delete("/posts/:id", middleware.isLoggedIn, function(request, response) {
 // show
 
 router.get("/posts/:id", function(request, response) {
-	var show_query = "SELECT * FROM Posts WHERE id=" + request.params.id
+	var show_query = "SELECT * FROM Posts WHERE id=" + helpers.escapeSQLString(request.params.id);
 	connection.query(helpers.logQuery(show_query), function(error, rows, fields) {
 		if (error) {
 			console.log(error);
