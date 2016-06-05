@@ -34,7 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(
 	function(username, password, done) {
-		var find_user_query = "SELECT * FROM Users WHERE Users.name = '" + username + "' LIMIT 1";
+		var find_user_query = "SELECT * FROM Users WHERE Users.name = '" + helpers.escapeSQLString(username) + "' LIMIT 1";
 		connection.query(helpers.logQuery(find_user_query), function(error, rows, fields) {
 			if (error) {
 				return done(error);

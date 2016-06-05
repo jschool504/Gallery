@@ -32,7 +32,7 @@ router.get("/signup", middleware.isLoggedIn, function(request, response) {
 });
 
 router.post("/signup", middleware.isLoggedIn, function(request, response) {
-	var signup_query = "INSERT INTO Users (name, password) VALUES ('" + request.body.username + "','" + bcrypt.hashSync(request.body.password) + "')";
+	var signup_query = "INSERT INTO Users (name, password) VALUES ('" + helpers.escapeSQLString(request.body.username) + "','" + bcrypt.hashSync(request.body.password) + "')";
 	connection.query(helpers.logQuery(signup_query), function(error) {
 		response.redirect("/");
 	});
