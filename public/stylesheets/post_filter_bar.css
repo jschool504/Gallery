@@ -45,9 +45,7 @@
     font-size: 16px;
 }
 
-/* Dropdown */
-
-.dropbtn {
+.category-button {
 	transition: 0.3s background-color;
 	background-color: white;
 	color: black;
@@ -57,13 +55,14 @@
 	cursor: pointer;
 	outline: 0;
 	text-align: center;
+	margin-left: 10px;
 }
 
-.dropbtnSelected {
+.category-button-selected {
 	background-color: lightgray;
 }
 
-.dropbtn:hover {
+.category-button:hover {
 	transition: 0.3s background-color;
 	background-color: lightgray;
 }

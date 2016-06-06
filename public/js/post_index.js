@@ -11,10 +11,10 @@ $(document).ready(function() {
 	if (categoryParam != null) {
 		console.log(categoryParam);
 		categoryParam = categoryParam = categoryParam.split("%20").join("");
-		$("#" + categoryParam).addClass("dropbtnSelected");
+		$("#" + categoryParam).addClass("category-button-selected");
 	} else {
 		categoryParam = "All";
-		$("#All").addClass("dropbtnSelected");
+		$("#All").addClass("category-button-selected");
 	}
 	
 	//Event Handlers
@@ -28,7 +28,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(".dropbtn").click(function(e) {
+	$(".category-button").click(function(e) {
 		location.href = "/posts/search?q=" + $("#postSearchField").val() + "&c=" + e.currentTarget.textContent;
 	});
 });

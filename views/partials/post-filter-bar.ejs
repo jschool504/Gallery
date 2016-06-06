@@ -15,11 +15,11 @@
 					<p id="filterMenuLabel">Categories:</p>
 				</li>
 				<li>
-					<button id="All" class="dropbtn">All</button>
+					<button id="All" class="category-button">All</button>
 				</li>
 				<% postCategories.forEach(function(postCategory) { %>
-				<li class="dropdown">
-					<button id="<%= postCategory.category.split(' ').join('') %>" class="dropbtn"><%= postCategory.category %></button>
+				<li>
+					<button id="<%= postCategory.category.split(' ').join('') %>" class="category-button"><%= postCategory.category %></button>
 				</li>
 				<% }); %>
 			</ul>

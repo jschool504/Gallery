@@ -49,23 +49,10 @@ $(document).ready(function() {
 		console.log(document.getElementById("postContentArea").innerText);
 		
 		editor.setHTML(document.getElementById("postContentArea").innerText);
-		//$("#postContentDiv").remove();
 		
 		// Font Dropdown Events
 		
-		$(document).click(function() {
-			$("#fontDropdownContent").hide();
-		});
-		
-		$("#fontDropdownButton").click(function(e) {
-			e.stopPropagation();
-			$("#fontDropdownContent").show();
-		});
-		
 		$(".font-menu-button").click(function(e) {
-			e.stopPropagation();
-			$("#fontDropdownContent").hide();
-			$("#fontDropdownButton").val(e.currentTarget.textContent);
 			editor["setFontFace"](e.currentTarget.textContent);
 		});
 		
@@ -81,11 +68,7 @@ $(document).ready(function() {
 			var value;
 			
 			if (e.currentTarget.id === "boldButton") {
-				if (editor.hasFormat("b")) {
-					editor["removeBold"]();
-				} else {
-					editor["bold"]();
-				}
+				
 			} else if (e.currentTarget.id == "italicButton") {
 				if (editor.hasFormat("i")) {
 					editor["removeItalic"]();
