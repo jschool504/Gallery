@@ -24,6 +24,5 @@ $(document).ready(function() {
 	$(".dropdown-content button").click(function(e) {
 		e.target.parentElement.previousElementSibling.value = e.target.textContent;
 		e.target.parentElement.style.display = "none";
-		search();
 	});
 });

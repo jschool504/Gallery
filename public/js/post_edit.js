@@ -8,7 +8,7 @@ $(document).ready(function() {
 	
 	// Helper Methods
 	var deselectImgs = function() {
-		var imgs = document.querySelectorAll("img");
+		var imgs = document.querySelectorAll("img"); // get all imgs on the page. possible issue if there are imgs on the page but not in the editor
 		
 		for (var i = 0; i < imgs.length; i++) {
 			if (imgs[i].src == $("#imgField").val()) {
@@ -32,8 +32,6 @@ $(document).ready(function() {
 	
 	// Set up Squire
 	$("#postContentEditor").ready(function() {
-		var saved_selection = null;
-		
 		var div_editor = document.getElementById("postContentEditor");
 		editor = new Squire(div_editor, {
 			blockTag: "p",
@@ -64,8 +62,6 @@ $(document).ready(function() {
 		
 		// Event Handlers for Squire
 		$(".post-edit-button").click(function(e) {
-			var action;
-			var value;
 			
 			if (e.currentTarget.id === "boldButton") {
 				
@@ -124,16 +120,16 @@ $(document).ready(function() {
 				editor.setTextAlignment("right");
 			}
 			
-			e.preventDefault();
+			e.preventDefault(); // stops the form from submitting
 			return false;
 		});
 		
 		editor.addEventListener("input", function() {
-			document.getElementById("postContentArea").innerText = editor.getHTML();
+			document.getElementById("postContentArea").innerText = editor.getHTML(); // this ugly solution seems necessary to get the modified content back to the server
 		});
 		
 		editor.addEventListener("pathChange", function() {
-			$("#fontDropdownButton").val(editor.getFontInfo().family.split(",")[0]);
+			$("#fontDropdownButton").val(editor.getFontInfo().family.split(",")[0]); // font.family has some other uneeded stuff on it so we just split that off
 			$("#fontSizeField").val(parseInt(editor.getFontInfo().size.split("px")[0]));
 		});
 		
@@ -143,7 +139,7 @@ $(document).ready(function() {
 		}, false);
 		
 		$("#editForm").submit(function(e) {
-			deselectImgs();
+			deselectImgs(); // deselect Imgs here so that the selection border doesn't get saved
 		});
 	});
 	

@@ -12,34 +12,30 @@ var connection = db.getConnection();
 
 router.get("/works/search", function(request, response) {
 	var typeTerm = "%";
-	if (request.query.f != "Type") {
+	if (request.query.f != "Type" && request.query.f != null) {
 		typeTerm = helpers.escapeSQLString(request.query.f);
 	}
 	
 	var widthTerm = "%";
-	if (request.query.w != "Width") {
+	if (request.query.w != "Width" && request.query.w != null) {
 		widthTerm = helpers.escapeSQLString(request.query.w.split("\"")[0]);
 	}
 	
 	var heightTerm = "%";
-	if (request.query.h != "Height") {
+	if (request.query.h != "Height" && request.query.h != null) {
 		heightTerm = helpers.escapeSQLString(request.query.h.split("\"")[0]);
 	}
 	
 	var genreTerm = "%";
-	if (request.query.g != "Genre") {
+	if (request.query.g != "Genre" && request.query.g != null) {
 		genreTerm = helpers.escapeSQLString(request.query.g);
 	}
 	
-	var tmpSoldQuery = "";
-	if (request.query.s != "All") {
-		tmpSoldQuery = "AND sold LIKE ";
-		if (request.query.s == "Available") {
-			tmpSoldQuery += "1";
-		} else if (request.query.s == "Unavailable") {
-			tmpSoldQuery += "0";
-		}
-		tmpSoldQuery = helpers.escapeSQLString(tmpSoldQuery);
+	var soldVal = "%"
+	if (request.query.s == "Available") {
+		soldVal = "1";
+	} else if (request.query.s == "Unavailable") {
+		soldVal = "0";
 	}
 	
 	var search_query = "SELECT * FROM Works WHERE title LIKE '%";
@@ -48,7 +44,7 @@ router.get("/works/search", function(request, response) {
 	search_query = search_query + "AND width LIKE '" + widthTerm + "' ";
 	search_query = search_query + "AND height LIKE '" + heightTerm + "' ";
 	search_query = search_query + "AND genre LIKE '" + genreTerm + "' ";
-	search_query = search_query + tmpSoldQuery;
+	search_query = search_query + "AND sold LIKE '" + soldVal + "'";
 	
 	connection.query(helpers.logQuery(search_query), function(error, workRows, fields) {
 		if (error) {

@@ -1,43 +1,53 @@
 $(document).ready(function() {
-
-	var searchParam = location.href.split("?q=")[1];
-	if (searchParam != null) {
-		$("#searchField").val(searchParam.split("&")[0].split("%27").join("'"));
-	}
-
-	var typeParam = location.href.split("&f=")[1];
-	if (typeParam != null) {
-		typeParam = typeParam.split("&")[0].split("%20")[0];
-		$("#typeDropButton").val(typeParam);
-	}
-
-	var genreParam = location.href.split("&g=")[1];
-	if (genreParam != null) {
-		genreParam = genreParam.split("&")[0].split("%20").join(" ");
-		$("#genreDropdownButton").val(genreParam);
-	}
-
-	var widthParam = location.href.split("&w=")[1];
-	if (widthParam != null) {
-		widthParam = widthParam.split("&")[0].split("%22")[0];
-		if (widthParam != "Width") {
-			widthParam = widthParam.split("&") + "\"";
+	
+	// UI Updaters
+	var paramsArray = location.href.split("?q=")[1];
+	paramsArray = paramsArray.split("=");
+	var params = [];
+	
+	// Convert url params to something humans can read
+	var chars = {
+		"%20": " ",
+		"%21": "!",
+		"%22": '"',
+		"%23": "#",
+		"%27": "'"
+	};
+	
+	paramsArray.forEach(function(param, index) {
+		param = param.split("&")[0];
+		
+		for(value in chars) {
+			param = param.split(value).join(chars[value]);
 		}
-		$("#widthDropdownButton").val(widthParam);
+		
+		params[index] = param;
+	});
+	
+	console.log(params);
+	
+	if (params[0] != null) { // check if null just incase someone GETS an incorrect url
+		$("#searchField").val(params[0]);
+	}
+	
+	if (params[1] != null) {
+		$("#typeDropButton").val(params[1]);
+	}
+	
+	if (params[2] != null) {
+		$("#genreDropdownButton").val(params[2]);
+	}
+	
+	if (params[3] != null) {
+		$("#widthDropdownButton").val(params[3]);
+	}
+	
+	if (params[4] != null) {
+		$("#heightDropdownButton").val(params[4]);
 	}
 
-	var heightParam = location.href.split("&h=")[1];
-	if (heightParam != null) {
-		heightParam = heightParam.split("&")[0].split("%22")[0];
-		if (heightParam != "Height") {
-			heightParam = heightParam.split("&") + "\"";
-		}
-		$("#heightDropdownButton").val(heightParam);
-	}
-
-	var soldParam = location.href.split("&s=")[1];
-	if (soldParam != null) {
-		$("#soldDropdownButton").val(soldParam);
+	if (params[5] != null) {
+		$("#soldDropdownButton").val(params[5]);
 	}
 	
 	var search = function() {
@@ -58,5 +68,9 @@ $(document).ready(function() {
 		if (e.keyCode == 13) {
 			search();
 		}
+	});
+	
+	$(".dropdown-content button").click(function(e) {
+		search();
 	});
 });
