@@ -1,34 +1,35 @@
 $(document).ready(function() {
-	
-	var searchParam = location.href.split("?q=")[1];
-	if (searchParam != null) {
-		$("#postSearchField").val(searchParam.split("&")[0]);
-	} else {
-		searchParam = "";
+	//search function
+	var search_posts = function(searchTerm, categoryTerm) {
+		location.href = "/posts/search?q=" + searchTerm + "&c=" + categoryTerm;
 	}
 	
-	var categoryParam = location.href.split("&c=")[1];
-	if (categoryParam != null) {
-		console.log(categoryParam);
-		categoryParam = categoryParam = categoryParam.split("%20").join("");
-		$("#" + categoryParam).addClass("category-button-selected");
-	} else {
-		categoryParam = "All";
-		$("#All").addClass("category-button-selected");
+	var params = decodeURL(location.href);
+	
+	if (params[0] != null) {
+		$("#postSearchField").val(params[0]);
 	}
+	
+	if (params[1] == "") {
+		params[1] = "All";
+	}
+	
+	console.log(params);
+	
+	$("#" + params[1]).addClass("category-button-selected");
 	
 	//Event Handlers
 	$("#postSearchButton").click(function() {
-		location.href = "/posts/search?q=" + $("#postSearchField").val() + "&c=" + categoryParam;
+		search_posts($("#postSearchField").val(), document.querySelectorAll(".category-button-selected")[0].textContent);
 	});
 
 	$("#postSearchField").keyup(function(e) {
 		if (e.keyCode == 13) {
-			location.href = "/posts/search?q=" + $("#postSearchField").val() + "&c=" + categoryParam;
+			search_posts($("#postSearchField").val(), document.querySelectorAll(".category-button-selected")[0].textContent);
 		}
 	});
 	
 	$(".category-button").click(function(e) {
-		location.href = "/posts/search?q=" + $("#postSearchField").val() + "&c=" + e.currentTarget.textContent;
+		search_posts($("#postSearchField").val(), e.target.textContent);
 	});
 });

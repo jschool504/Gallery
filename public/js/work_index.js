@@ -1,32 +1,19 @@
 $(document).ready(function() {
-	
-	// UI Updaters
-	var paramsArray = location.href.split("?q=")[1];
-	paramsArray = paramsArray.split("=");
-	var params = [];
-	
-	// Convert url params to something humans can read
-	var chars = {
-		"%20": " ",
-		"%21": "!",
-		"%22": '"',
-		"%23": "#",
-		"%27": "'"
+	// search function
+	var search_works = function() {
+		location.href = "/works/search?q=" + encodeURLString($("#searchField").val()) + //convert weird characters to URL friendly ones
+			//strip characters from these because we know they shouldn't have such options anyway
+			"&f=" + stripURLChars($("#typeDropButton").val()) +
+			"&g=" + stripURLChars($("#genreDropdownButton").val()) +
+			"&w=" + stripURLChars($("#widthDropdownButton").val()) +
+			"&h=" + stripURLChars($("#heightDropdownButton").val()) +
+			"&s=" + stripURLChars($("#soldDropdownButton").val())
 	};
 	
-	paramsArray.forEach(function(param, index) {
-		param = param.split("&")[0];
-		
-		for(value in chars) {
-			param = param.split(value).join(chars[value]);
-		}
-		
-		params[index] = param;
-	});
+	// UI Updaters
+	var params = decodeURL(location.href); // from utils.js
 	
-	console.log(params);
-	
-	if (params[0] != null) { // check if null just incase someone GETS an incorrect url
+	if (params[0] != null) {
 		$("#searchField").val(params[0]);
 	}
 	
@@ -49,28 +36,19 @@ $(document).ready(function() {
 	if (params[5] != null) {
 		$("#soldDropdownButton").val(params[5]);
 	}
-	
-	var search = function() {
-		location.href = "/works/search?q=" + $("#searchField").val() +
-			"&f=" + $("#typeDropButton").val() +
-			"&g=" + $("#genreDropdownButton").val() +
-			"&w=" + $("#widthDropdownButton").val() +
-			"&h=" + $("#heightDropdownButton").val() +
-			"&s=" + $("#soldDropdownButton").val()
-	};
 
 	// Event Handlers
 	$("#searchButton").click(function() {
-		search();
+		search_works();
 	});
 
 	$("#searchField").keyup(function(e) {
 		if (e.keyCode == 13) {
-			search();
+			search_works();
 		}
 	});
 	
 	$(".dropdown-content button").click(function(e) {
-		search();
+		search_works();
 	});
 });

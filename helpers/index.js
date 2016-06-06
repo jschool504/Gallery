@@ -1,5 +1,7 @@
 var helpers = {};
 
+// Server side
+
 helpers.logQuery = function(query) {
 	console.log(query);
 	return query;
