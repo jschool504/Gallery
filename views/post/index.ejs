@@ -4,13 +4,15 @@
 
 <link rel="stylesheet" href="/stylesheets/post_index.css"/>
 
-<div id="post-container" class="container-fluid row">
+<div>
+	
+</div>
+
+<div style="margin-right:20px;margin-left:20px;margin-top:20px">
 	<% posts.forEach(function(post) { %>
-		<div class="col-lg-1">
-			<div class="preview-post-panel">
-				<a href="/posts/<%= post.id %>"><%= post.title %><p><%= post.date %> | <%= post.category %>
-				<% if (currentUser !== null && post.display == 0) { %>| <span style="color:red">Private</span><% } %></p></a>
-			</div>
+		<div class="preview-post-panel">
+			<a href="/posts/<%= post.id %>"><%= post.title %><p><%= post.date %> | <%= post.category %>
+			<% if (currentUser !== null && post.display == 0) { %>| <span style="color:red">Private</span><% } %></p></a>
 		</div>
 	<% }); %>
 </div>

@@ -1,8 +1,41 @@
 <% include partials/header %>
+<link rel="stylesheet" href="/stylesheets/work_index.css"/>
+<link rel="stylesheet" href="/stylesheets/post_index.css"/>
+<div style="width: 728px;z-index:-1; margin:auto;">
+	
+	<div class="black-panel" style="width:auto;">
+		<h1>Lindsay's Great Art Site!!</h1>
+		<h3>Cool thingies are here :D</h3>
+	</div>
+	<div style="margin:20px;">
+		<div style="margin-right:20px; width: 460px;float:left">
+			<div class="black-panel" style="padding:10px;margin-top:0;margin-bottom:15px;width:100%">
+				<h2 style="margin:0;"><b>Available Paintings</b></h2>
+			</div>
+			<% works.forEach(function(work) { %>
+				<div class="col-sm-3" style="padding:0;margin-bottom:10px;width:100%">
+					<div class="thumbnail">
+						<a class="darken" href="/works/<%= work.id %>"><img  src="<%= work.image %>"/></a>
+						<div class="preview-title-content">
+							<span class="preview-title"><%= work.title %></span>
+						</div>
+					</div>
+				</div>
+			<% }); %>
+		</div>
 
-<div class="black-panel">
-	<h1><strong>Welcome to Lindsay's awesome art gallery!</strong></h1>
-	<h3>Here there be many fine works of art :-)</h3>
+		<div style="margin-left:20px;overflow:auto;">
+			<div class="preview-post-panel" style="padding:10px;margin-top:0;margin-bottom:15px;border:3px solid black;background-color:lightgrey;">
+				<h2 style="margin:0;"><b>Recent Posts</b></h2>
+			</div>
+			<% posts.forEach(function(post) { %>
+				<div class="preview-post-panel" style="margin-bottom:10px;width:auto">
+					<a href="/posts/<%= post.id %>"><%= post.title %><p><%= post.date %> | <%= post.category %>
+					<% if (currentUser !== null && post.display == 0) { %>| <span style="color:red">Private</span><% } %></p></a>
+				</div>
+			<% }); %>
+		</div>
+	</div>
 </div>
 
 <% include partials/footer %>

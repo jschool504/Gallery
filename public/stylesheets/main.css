@@ -129,6 +129,7 @@ body {
 	margin-right: auto;
 	margin-top: 20px;
 	padding: 20px;
+	box-shadow: 5px 5px 10px #595959;
 }
 
 .black-panel>h1 {

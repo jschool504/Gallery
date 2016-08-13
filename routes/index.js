@@ -11,7 +11,13 @@ var passport = require("passport");
 // Landing Page
 
 router.get("/", function(request, response) {
-	response.render("welcome");
+	var random_available_works_query = "SELECT * FROM Works WHERE sold = 0 ORDER BY RAND() LIMIT 3";
+	var post_query = "SELECT * FROM Posts LIMIT 3";
+	connection.query(helpers.logQuery(random_available_works_query), function(error, workRows) {
+		connection.query(helpers.logQuery(post_query), function(error, postRows) {
+			response.render("welcome", {works:workRows, posts:postRows});
+		});
+	});
 });
 
 // User auth
