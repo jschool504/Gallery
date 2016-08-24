@@ -1,0 +1,58 @@
+#pageDiv {
+	width: 728px;
+	z-index: -1; 
+	margin: auto;
+}
+
+#welcomePanel {
+	width: auto;
+}
+
+#contentDiv {
+	margin: 20px;
+}
+
+#workListDiv {
+	margin-right:20px;
+	width: 460px;
+	float: left;
+}
+
+#contentHeadingDiv {
+	padding:10px;
+	margin-top:0;
+	margin-bottom:15px;
+	width:100%;
+}
+
+#contentHeadingDiv>h2 {
+	margin: 0;
+}
+
+#workContainerDiv {
+	padding: 0;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+#postListDiv {
+	margin-left: 20px;
+	overflow: auto;
+}
+
+#postHeadingDiv {
+	padding:10px;
+	margin-top:0;
+	margin-bottom:15px;
+	border:3px solid black;
+	background-color:lightgrey;
+}
+
+#postHeadingDiv>h2 {
+	margin: 0;
+}
+
+#postDiv {
+	margin-bottom: 10px;
+	width: auto;
+}
