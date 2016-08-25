@@ -8,21 +8,5 @@
 			<button id="postSearchButton">Search</button>
 			<button id="filterMenuButton" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#filterMenu">Filters</button>
 		</div>
-		
-		<div id="filterMenu" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li>
-					<p id="filterMenuLabel">Categories:</p>
-				</li>
-				<li>
-					<button id="All" class="category-button">All</button>
-				</li>
-				<% postCategories.forEach(function(postCategory) { %>
-				<li>
-					<button id="<%= postCategory.category.split(' ').join('') %>" class="category-button"><%= postCategory.category %></button>
-				</li>
-				<% }); %>
-			</ul>
-		</div>
 	</div>
 </nav>

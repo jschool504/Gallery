@@ -32,30 +32,6 @@
 	background-color: lightgray;
 }
 
-#filterMenuButton {
-	transition: 0.3s background-color;
-    background-color: white;
-    margin: 0;
-    border: none;
-    color: black;
-    font-size: 12pt;
-    padding: 5px 10px;
-}
-
-#filterMenuLabel {
-	margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 20px;
-    font-size: 16px;
-}
-
-#filterMenu {
-	margin: 0;
-	border: none;
-	box-shadow: none;
-	overflow-y: visible;
-}
-
 #filterBar {
 	padding-top: 10px;
 	padding-bottom: 10px;

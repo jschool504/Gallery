@@ -4,15 +4,28 @@
 
 <link rel="stylesheet" href="/stylesheets/post_index.css"/>
 
-<div>
-	
-</div>
-
-<div style="margin-right:20px;margin-left:20px;margin-top:20px">
-	<% posts.forEach(function(post) { %>
-		<div class="preview-post-panel">
-			<a href="/posts/<%= post.id %>"><%= post.title %><p><%= post.date %> | <%= post.category %>
-			<% if (currentUser !== null && post.display == 0) { %>| <span style="color:red">Private</span><% } %></p></a>
-		</div>
-	<% }); %>
+<div id="postPageDiv">
+	<div id="postListDiv">
+		<% posts.forEach(function(post) { %>
+			<div class="preview-post-panel">
+				<a href="/posts/<%= post.id %>"><%= post.title %><p><%= post.date %> | <%= post.category %>
+				<% if (currentUser !== null && post.display == 0) { %>| <span style="color:red">Private</span><% } %></p></a>
+			</div>
+		<% }); %>
+	</div>
+	<div class="blk-panel" id="categoryListDiv">
+		<ul style="list-style: none; padding: 0px;">
+			<li>
+				<p id="filterMenuLabel">Categories</p>
+			</li>
+			<li>
+				<p id="All" class="category-button">All</button>
+			</li>
+			<% postCategories.forEach(function(postCategory) { %>
+			<li>
+				<p id="<%= postCategory.category.split(' ').join('') %>" class="category-button"><%= postCategory.category %></button>
+			</li>
+			<% }); %>
+		</ul>
+	</div>
 </div>

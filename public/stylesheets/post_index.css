@@ -1,5 +1,22 @@
 /* Post List */
 
+#postPageDiv {
+	width: 720px; 
+	margin: auto;
+	margin-top:20px;
+}
+
+#postListDiv {
+	margin-right:20px;
+	width: 500px;
+	float: left;
+}
+
+#categoryListDiv {
+	width:200px;
+	overflow: auto;
+}
+
 .col-lg-1 {
 	width: 225px;
 	padding-left: 20px;

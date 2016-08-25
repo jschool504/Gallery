@@ -120,6 +120,13 @@ body {
 	margin-top: 15px;
 }
 
+.blk-panel {
+	text-align: center;
+	background-color: black;
+	padding: 5px;
+	box-shadow: 5px 5px 10px #595959;
+}
+
 .black-panel {
 	width: 768px;
 	min-width: 400px;
